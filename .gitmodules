@@ -1,0 +1,3 @@
+[submodule "DevStuff/wiki"]
+	path = DevStuff/wiki
+	url = git@github.com:Honix/codebarCakephp.wiki.git
