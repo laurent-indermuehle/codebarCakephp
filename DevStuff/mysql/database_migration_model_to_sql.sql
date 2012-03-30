@@ -103,9 +103,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codebarcakephp`.`persons`
+-- Table `codebarcakephp`.`people`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`persons` (
+CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`people` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `language_id` VARCHAR(2) NOT NULL ,
   `partner_id` INT NULL ,

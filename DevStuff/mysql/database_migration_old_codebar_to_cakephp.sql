@@ -19,11 +19,11 @@ ALTER TABLE `articles` ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,DROP PRIMARY KEY 
   ,ADD PRIMARY KEY (`id`);
 
--- codebar_tbl_person TO persons
-DROP TABLE IF EXISTS `persons`;
-CREATE TABLE `persons` LIKE `codebar`.`codebar_tbl_personne`;
-INSERT INTO `persons` SELECT * FROM `codebar`.`codebar_tbl_personne`;
-ALTER TABLE `persons` ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
+-- codebar_tbl_person TO people
+DROP TABLE IF EXISTS `people`;
+CREATE TABLE `people` LIKE `codebar`.`codebar_tbl_personne`;
+INSERT INTO `people` SELECT * FROM `codebar`.`codebar_tbl_personne`;
+ALTER TABLE `people` ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,ADD COLUMN `is_technician` TINYINT(1) NOT NULL DEFAULT 0 AFTER `phone_number`
   ,ADD COLUMN `language_id` INT NOT NULL AFTER `is_banned`
   ,CHANGE COLUMN `Pers_Sciper` `sciper` INT(8) NOT NULL
@@ -34,15 +34,15 @@ ALTER TABLE `persons` ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,CHANGE COLUMN `Pers_Bannie_Jusqua` `is_banned` INT(15) NULL DEFAULT NULL
   ,DROP PRIMARY KEY 
   ,ADD PRIMARY KEY (`id`);
-CREATE UNIQUE INDEX `sciper_UNIQUE` ON `persons` (`sciper` ASC);
+CREATE UNIQUE INDEX `sciper_UNIQUE` ON `people` (`sciper` ASC);
   
--- codebar_tbl_technicien to persons
-INSERT INTO `persons` (`sciper`, `first_name`, `last_name`, `email`, `phone_number`, `is_technician`, `is_banned`, `language_id`) 
+-- codebar_tbl_technicien to people
+INSERT INTO `people` (`sciper`, `first_name`, `last_name`, `email`, `phone_number`, `is_technician`, `is_banned`, `language_id`) 
     SELECT `Tech_Id` AS `sciper`, `Tech_Prenom` AS `first_name`, `Tech_Nom` AS `last_name`, `Tech_Email` AS `email`, `Tech_Tel` AS `phone_number`, '1', NULL, '0'
     FROM `codebar`.`codebar_tbl_technicien`
-    LEFT OUTER JOIN `persons`
-    ON `codebar`.`codebar_tbl_technicien`.`Tech_Id` = `persons`.`sciper`
-    WHERE `persons`.`sciper` IS NULL;
+    LEFT OUTER JOIN `people`
+    ON `codebar`.`codebar_tbl_technicien`.`Tech_Id` = `people`.`sciper`
+    WHERE `people`.`sciper` IS NULL;
 
 -- codebar_tbl_machine TO devices
 DROP TABLE IF EXISTS `devices`;

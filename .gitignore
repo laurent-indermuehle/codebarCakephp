@@ -8,3 +8,4 @@
 */tmp/tests/*
 /tmp/desktop.ini
 *.mwb.bak
+*database_dump*
