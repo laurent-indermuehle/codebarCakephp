@@ -1,0 +1,10 @@
+###
+# CakePHP tmp content
+###
+*Config/database.php
+*/tmp/cache/*
+*/tmp/logs/*
+*/tmp/sessions/*
+*/tmp/tests/*
+/tmp/desktop.ini
+*.mwb.bak
