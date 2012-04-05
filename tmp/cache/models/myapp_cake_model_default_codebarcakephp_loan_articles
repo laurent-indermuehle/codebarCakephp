@@ -1,2 +1,0 @@
-1333113979
-a:5:{s:2:"id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;s:3:"key";s:7:"primary";}s:10:"article_id";a:4:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";s:1:"0";s:6:"length";i:11;}s:7:"loan_id";a:4:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;}s:27:"person_technician_return_id";a:4:{s:4:"type";s:7:"integer";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:11;}s:18:"actual_return_date";a:4:{s:4:"type";s:7:"integer";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:15;}}
