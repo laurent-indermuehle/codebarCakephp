@@ -73,11 +73,11 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`device_types` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(50) NOT NULL ,
-  `device_brand_id` INT NOT NULL ,
+  `brand_id` INT NOT NULL ,
   `device_category_id` INT NOT NULL ,
   `is_active` TINYINT(1) NOT NULL DEFAULT 1 ,
   PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `NameAndBrand_UNIQUE` (`name` ASC, `device_brand_id` ASC) )
+  UNIQUE INDEX `NameAndBrand_UNIQUE` (`name` ASC, `brand_id` ASC) )
 ENGINE = InnoDB;
 
 
@@ -86,7 +86,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`languages` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `language_full_name` VARCHAR(45) NOT NULL ,
+  `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
@@ -116,6 +116,7 @@ CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`people` (
   `phone_number` VARCHAR(50) NULL ,
   `is_technician` TINYINT(1) NOT NULL ,
   `is_banned` TINYINT(1) NOT NULL ,
+  `loans_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   UNIQUE INDEX `sciper_UNIQUE` (`sciper` ASC) )
@@ -175,7 +176,7 @@ CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`loans` (
   `borrow_date` DATETIME NOT NULL ,
   `person_technician_id` INT NOT NULL ,
   `person_customer_id` INT NOT NULL ,
-  `technical_loans_id` INT NULL ,
+  `technical_loan_id` INT NULL ,
   `technical_loans_intervention_id` INT NULL ,
   `technical_loans_loan_id` INT NULL ,
   PRIMARY KEY (`id`) ,
@@ -222,7 +223,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`external_intervention_number_types` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `partners_id` INT NOT NULL ,
+  `partner_id` INT NOT NULL ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -235,7 +236,7 @@ CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`external_intervention_numbers` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `intervention_id` INT NOT NULL ,
   `partner_id` INT NOT NULL ,
-  `external_intervention_number_types_id` INT NOT NULL ,
+  `external_intervention_number_type_id` INT NOT NULL ,
   `number` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -248,7 +249,7 @@ CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`estimates` (
   `id` INT NOT NULL ,
   `entry_date` DATETIME NOT NULL ,
   `deadline_date` DATETIME NOT NULL ,
-  `interventions_id` INT NOT NULL ,
+  `intervention_id` INT NOT NULL ,
   `external_intervention_number_id` INT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -331,10 +332,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`estimate_items` (
   `id` INT NOT NULL AUTO_INCREMENT ,
+  `estimate_id` INT NOT NULL ,
   `name` VARCHAR(45) NOT NULL ,
   `quantity` INT NOT NULL DEFAULT 1 ,
   `price` VARCHAR(45) NOT NULL ,
-  `estimates_id` INT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -398,8 +399,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`causes_diagnostics` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `diagnostics_id` INT NOT NULL ,
-  `causes_id` INT NOT NULL ,
+  `diagnostic_id` INT NOT NULL ,
+  `cause_id` INT NOT NULL ,
   `answer` TINYINT(1) NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;

@@ -14,7 +14,7 @@ ALTER TABLE `articles` ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,CHANGE COLUMN `Article_Id` `serial_number` VARCHAR(50) NOT NULL DEFAULT ''
   ,CHANGE COLUMN `Article_Description` `description` VARCHAR(50) NOT NULL DEFAULT ''
   ,CHANGE COLUMN `Article_Appartient_A` `part_of` VARCHAR(50) NULL DEFAULT NULL
-  ,CHANGE COLUMN `Article_Localisation` `localisation_id` VARCHAR(20) NOT NULL DEFAULT 'Co171'
+  ,CHANGE COLUMN `Article_Localisation` `location_id` VARCHAR(20) NOT NULL DEFAULT 'Co171'
   ,CHANGE COLUMN `BoolActif` `is_active` TINYINT NULL DEFAULT 1
   ,DROP PRIMARY KEY 
   ,ADD PRIMARY KEY (`id`);
@@ -48,12 +48,16 @@ INSERT INTO `people` (`sciper`, `first_name`, `last_name`, `email`, `phone_numbe
 DROP TABLE IF EXISTS `devices`;
 CREATE TABLE `devices` LIKE `codebar`.`codebar_tbl_machine`;
 INSERT INTO `devices` SELECT * FROM `codebar`.`codebar_tbl_machine`;
+ALTER TABLE `devices` ADD COLUMN `person_id`INT NOT NULL DEFAULT '0';
+UPDATE `devices` SET `person_id` = (SELECT `id` AS `person_id`
+  FROM `people`
+  WHERE `devices`.`Mach_IdxSciper` = `people`.`sciper`);
 ALTER TABLE `devices` ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,ADD COLUMN `date_first_seen` DATETIME AFTER `id`
   ,ADD COLUMN `date_end_of_warranty` DATETIME AFTER `id`
   ,CHANGE COLUMN `Mach_ServiceTag` `serial_number` VARCHAR(30) NOT NULL DEFAULT ''
   ,CHANGE COLUMN `Mach_IdxTypeMachine` `device_type_id` INT(6) NOT NULL DEFAULT '0'
-  ,CHANGE COLUMN `Mach_IdxSciper` `person_id` INT(8) NOT NULL DEFAULT '0'
+  ,DROP COLUMN `Mach_IdxSciper`
   ,DROP PRIMARY KEY 
   ,ADD PRIMARY KEY (`id`);
   
@@ -62,8 +66,10 @@ DROP TABLE IF EXISTS `device_types`;
 CREATE TABLE `device_types` LIKE `codebar`.`codebar_tbl_type_machine`;
 INSERT INTO `device_types` SELECT * FROM `codebar`.`codebar_tbl_type_machine`;
 ALTER TABLE `device_types` CHANGE COLUMN `TypeMachine_ID` `id` INT(6) NOT NULL AUTO_INCREMENT
-  ,CHANGE COLUMN `TypeMachine` `device_type_id` VARCHAR(45) NOT NULL DEFAULT ''
-  ,CHANGE COLUMN `BoolActif` `is_active` TINYINT(1) NOT NULL DEFAULT '1';
+  ,CHANGE COLUMN `TypeMachine` `name` VARCHAR(50) NOT NULL
+  ,CHANGE COLUMN `BoolActif` `is_active` TINYINT(1) NOT NULL DEFAULT '1'
+  ,ADD COLUMN `brand_id` INT NOT NULL
+  ,ADD COLUMN `device_category_id` INT NOT NULL;
   
 -- codebar_tbl_emprunt TO loans
 DROP TABLE IF EXISTS `loans`;
