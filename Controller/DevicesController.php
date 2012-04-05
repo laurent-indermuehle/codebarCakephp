@@ -7,8 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class DevicesController extends AppController {
 
-public $helpers = array('Js');
-
 /**
  * index method
  *

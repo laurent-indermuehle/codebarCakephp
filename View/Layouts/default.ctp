@@ -31,7 +31,7 @@ $cakeDescription = __d('codebar_dev', 'Codebar on CakePHP');
 
 		echo $this->Html->css('cake.generic');
 
-		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
+		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
