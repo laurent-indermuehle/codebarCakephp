@@ -12,6 +12,13 @@
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
+<script type="text/javascript">
+	 $(document).ready(function() {
+   		$("a").click(function() {
+     		alert("Hello world!");
+   		});
+ 	});
+</script>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
@@ -26,4 +33,3 @@
 		<li><?php echo $this->Html->link(__('New Intervention'), array('controller' => 'interventions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<?php echo $this->Js->writeBuffer(); ?>
