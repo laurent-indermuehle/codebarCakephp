@@ -59,7 +59,7 @@ $cakeDescription = __d('codebar_dev', 'Codebar on CakePHP');
 			?>
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //echo $this->element('sql_dump'); ?>
 	<?php echo $this->Js->writeBuffer(); ?>
 </body>
 </html>
