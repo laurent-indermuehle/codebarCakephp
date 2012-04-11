@@ -8,6 +8,21 @@ App::uses('AppController', 'Controller');
 class DevicesController extends AppController {
 
 /**
+ * getByBrand method
+ *
+ * @return void
+ */
+	public function getByBrand() {
+		$brand = $this->request->data['Device'];
+		$deviceType = $this->Device->DeviceType->find('list', array(
+			'conditions' => array('DeviceType.brand_id' => $brand),
+			'recursive' => -1
+		));
+		$this->set('deviceType', $deviceType);
+		$this->layout = 'ajax';
+	}
+
+/**
  * index method
  *
  * @return void

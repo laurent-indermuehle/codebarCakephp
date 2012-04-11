@@ -7,8 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class DeviceTypesController extends AppController {
 
-	public $helpers = array('Html', 'Form');
-
 /**
  * index method
  *

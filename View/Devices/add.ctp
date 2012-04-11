@@ -3,22 +3,15 @@
 	<fieldset>
 		<legend><?php echo __('Add Device'); ?></legend>
 	<?php
-		echo $this->Form->input('date_end_of_warranty');
-		echo $this->Form->input('date_first_seen');
+		//echo $this->Form->input('date_end_of_warranty');
+		//echo $this->Form->input('date_first_seen');
 		echo $this->Form->input('serial_number');
-		echo $this->Form->input('brand_id');
-		echo $this->Form->input('device_type_id');
-		echo $this->Form->input('person_id');
+		echo $this->Form->input('brand_id', array('empty' => 'Select one'));
+		echo $this->Form->input('device_type_id', array('empty' => 'Select Brand first'));
+		//echo $this->Form->input('person_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
-<script type="text/javascript">
-	 $(document).ready(function() {
-   		$("a").click(function() {
-     		alert("Hello world!");
-   		});
- 	});
-</script>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
@@ -33,3 +26,21 @@
 		<li><?php echo $this->Html->link(__('New Intervention'), array('controller' => 'interventions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+
+<?php
+$this->Js->get('#DeviceBrandId')->event('change', 
+	$this->Js->request(array(
+		'controller'=>'devices',
+		'action'=>'getByBrand'
+		), array(
+		'update'=>'#DeviceDeviceTypeId',
+		'async' => true,
+		'method' => 'post',
+		'dataExpression'=>true,
+		'data'=> $this->Js->serializeForm(array(
+			'isForm' => true,
+			'inline' => true
+			))
+		))
+	);
+?>

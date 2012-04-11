@@ -7,7 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class BrandsController extends AppController {
 
-
 /**
  * index method
  *
