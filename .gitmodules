@@ -1,3 +1,6 @@
 [submodule "DevStuff/wiki"]
 	path = DevStuff/wiki
 	url = git@github.com:Honix/codebarCakephp.wiki.git
+[submodule "Plugin/DebugKit"]
+	path = Plugin/DebugKit
+	url = https://github.com/cakephp/debug_kit.git
