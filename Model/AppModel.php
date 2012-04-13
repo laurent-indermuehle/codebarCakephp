@@ -32,6 +32,8 @@ App::uses('Model', 'Model');
  */
 class AppModel extends Model {
 
+	public $actsAs = array('Containable');
+
 	// -- ---------- --
 	// -- HUMAN DATE -- BEGIN
 	// -- ---------- --
