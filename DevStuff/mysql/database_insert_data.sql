@@ -2,6 +2,16 @@ INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) V
 INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('2', 'Lenovo', 'www.lenovo.com/checkwarranty');
 INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('3', 'Apple', 'www.apple.ch/support');
 INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('4', 'HP', 'www.hp.ch');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('5', 'Western Digital', 'www.wd.ch');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('6', 'LiteOn', 'www.LiteOn.ch');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('7', 'Samsung', 'www.samsung.ch');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('8', 'Logitech', 'www.logitech.ch');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('9', 'Asus', 'www.asus.ch');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('10', 'Acer', 'www.acer.ch');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('11', 'Toshiba', 'www.toshiba.ch');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('12', 'Fujitsu Siemens', 'www.fs.ch');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('13', 'Medion', 'www.medion.ch');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('14', 'AlienWare', 'www.aw.ch');
 
 INSERT INTO `codebarcakephp`.`device_categories` (`name`) VALUES ('laptop');
 INSERT INTO `codebarcakephp`.`device_categories` (`name`) VALUES ('batterie');
@@ -9,6 +19,26 @@ INSERT INTO `codebarcakephp`.`device_categories` (`name`) VALUES ('hdd');
 INSERT INTO `codebarcakephp`.`device_categories` (`name`) VALUES ('sdd');
 INSERT INTO `codebarcakephp`.`device_categories` (`name`) VALUES ('chargeur');
 INSERT INTO `codebarcakephp`.`device_categories` (`name`) VALUES ('graveur DVD');
+INSERT INTO `codebarcakephp`.`device_categories` (`name`) VALUES ('souris');
+
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('Souri Laser bleue', 1, 8, 7);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('6 cells 45W/h', 1, 7, 2);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('4 cells 43W/h', 1, 1, 2);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('6 cells 53W/h', 1, 2, 2);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('9 cells 85W/h', 1, 3, 2);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('90W', 1, 1, 5);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('65W', 1, 2, 5);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('90W', 1, 3, 5);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('135W', 1, 4, 5);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('500Go 7200 tr/min 2.5"', 1, 5, 3);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('500Go 5400 tr/min 2.5"', 1, 7, 3);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('750Go 7200 tr/min 2.5"', 1, 11, 3);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('128Go 2.5"', 1, 5, 4);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('240Go 2.5"', 1, 7, 4);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('250Go 2.5"', 1, 11, 4);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('DVD lightscribe"', 1, 6, 6);
+
+DELETE FROM `codebarcakephp`.`device_types` WHERE `id`='21';
 
 UPDATE `codebarcakephp`.`device_types` SET `brand_id`=1, `device_category_id`=1 WHERE `id`='1';
 UPDATE `codebarcakephp`.`device_types` SET `brand_id`=1, `device_category_id`=1 WHERE `id`='2';
