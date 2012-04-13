@@ -1,7 +1,7 @@
-INSERT INTO `codebarcakephp`.`brands` (`name`, `link_to_warranty_check`) VALUES ('Dell', 'www.dell.ch/support');
-INSERT INTO `codebarcakephp`.`brands` (`name`, `link_to_warranty_check`) VALUES ('Lenovo', 'www.lenovo.com/checkwarranty');
-INSERT INTO `codebarcakephp`.`brands` (`name`, `link_to_warranty_check`) VALUES ('Apple', 'www.apple.ch/support');
-INSERT INTO `codebarcakephp`.`brands` (`name`, `link_to_warranty_check`) VALUES ('HP', 'www.hp.ch');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('1', 'Dell', 'www.dell.ch/support');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('2', 'Lenovo', 'www.lenovo.com/checkwarranty');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('3', 'Apple', 'www.apple.ch/support');
+INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('4', 'HP', 'www.hp.ch');
 
 INSERT INTO `codebarcakephp`.`device_categories` (`name`) VALUES ('laptop');
 INSERT INTO `codebarcakephp`.`device_categories` (`name`) VALUES ('batterie');
@@ -27,10 +27,10 @@ UPDATE `codebarcakephp`.`device_types` SET `brand_id`=3, `device_category_id`=1 
 UPDATE `codebarcakephp`.`device_types` SET `brand_id`=3, `device_category_id`=1 WHERE `id`='15';
 UPDATE `codebarcakephp`.`device_types` SET `brand_id`=3, `device_category_id`=1 WHERE `id`='16';
 UPDATE `codebarcakephp`.`device_types` SET `brand_id`=3, `device_category_id`=1 WHERE `id`='17';
-UPDATE `codebarcakephp`.`device_types` SET `brand_id`=1, `device_category_id`=1 WHERE `id`='18';
-UPDATE `codebarcakephp`.`device_types` SET `brand_id`=1, `device_category_id`=1 WHERE `id`='19';
-UPDATE `codebarcakephp`.`device_types` SET `brand_id`=1, `device_category_id`=1 WHERE `id`='20';
-UPDATE `codebarcakephp`.`device_types` SET `device_category_id`=1 WHERE `id`='21';
+UPDATE `codebarcakephp`.`device_types` SET `brand_id`=2, `device_category_id`=1 WHERE `id`='18';
+UPDATE `codebarcakephp`.`device_types` SET `brand_id`=2, `device_category_id`=1 WHERE `id`='19';
+UPDATE `codebarcakephp`.`device_types` SET `brand_id`=2, `device_category_id`=1 WHERE `id`='20';
+UPDATE `codebarcakephp`.`device_types` SET `brand_id`=0, `device_category_id`=1 WHERE `id`='21';
 UPDATE `codebarcakephp`.`device_types` SET `brand_id`=3, `device_category_id`=1 WHERE `id`='22';
 UPDATE `codebarcakephp`.`device_types` SET `brand_id`=1, `device_category_id`=1 WHERE `id`='29';
 UPDATE `codebarcakephp`.`device_types` SET `brand_id`=1, `device_category_id`=1 WHERE `id`='23';

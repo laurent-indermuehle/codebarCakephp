@@ -8,21 +8,6 @@ App::uses('AppController', 'Controller');
 class DevicesController extends AppController {
 
 /**
- * getByBrand method
- *
- * @return void
- */
-	public function getByBrand() {
-		$brand = $this->request->data['Device'];
-		$deviceType = $this->Device->DeviceType->find('list', array(
-			'conditions' => array('DeviceType.brand_id' => $brand),
-			'recursive' => -1
-		));
-		$this->set('deviceType', $deviceType);
-		$this->layout = 'ajax';
-	}
-
-/**
  * index method
  *
  * @return void
@@ -67,10 +52,11 @@ class DevicesController extends AppController {
 				$this->Session->setFlash(__('The device could not be saved. Please, try again.'));
 			}
 		}
+		$deviceCategories = $this->Device->DeviceType->DeviceCategory->find('list');
 		$deviceTypes = $this->Device->DeviceType->find('list');
 		$people = $this->Device->Person->find('list');
 		$brands = $this->Device->DeviceType->Brand->find('list');
-		$this->set(compact('deviceTypes', 'people', 'brands'));
+		$this->set(compact('deviceCategories', 'deviceTypes', 'people', 'brands'));
 	}
 
 /**

@@ -3,12 +3,13 @@
 	<fieldset>
 		<legend><?php echo __('Add Device'); ?></legend>
 	<?php
-		//echo $this->Form->input('date_end_of_warranty');
-		//echo $this->Form->input('date_first_seen');
+		echo $this->Form->input('date_end_of_warranty');
+		echo $this->Form->input('date_first_seen');
 		echo $this->Form->input('serial_number');
-		echo $this->Form->input('brand_id', array('empty' => 'Select one'));
-		echo $this->Form->input('device_type_id', array('empty' => 'Select Brand first'));
-		//echo $this->Form->input('person_id');
+		echo $this->Form->input('device_category_id', array('div' => 'device_tree'));
+		echo $this->Form->input('brand_id', array('div' => 'device_tree'));
+		echo $this->Form->input('device_type_id', array('div' => 'device_tree'));
+		echo $this->Form->input('person_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
@@ -28,9 +29,27 @@
 </div>
 
 <?php
+//get brand by device_category
+$this->Js->get('#DeviceDeviceCategoryId')->event('change', 
+	$this->Js->request(array(
+		'controller'=>'device_types',
+		'action'=>'getBrandsByDeviceCategory'
+		), array(
+		'update'=>'#DeviceBrandId',
+		'async' => true,
+		'method' => 'post',
+		'dataExpression'=>true,
+		'data'=> $this->Js->serializeForm(array(
+			'isForm' => true,
+			'inline' => true
+			))
+		))
+	);
+
+//get device_type by brand
 $this->Js->get('#DeviceBrandId')->event('change', 
 	$this->Js->request(array(
-		'controller'=>'devices',
+		'controller'=>'device_types',
 		'action'=>'getByBrand'
 		), array(
 		'update'=>'#DeviceDeviceTypeId',

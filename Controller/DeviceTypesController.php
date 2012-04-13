@@ -8,6 +8,37 @@ App::uses('AppController', 'Controller');
 class DeviceTypesController extends AppController {
 
 /**
+ * getBrandsByDeviceCategory method
+ *
+ * @return void
+ */
+	public function getBrandsByDeviceCategory() {
+		$category = $this->request->data['Device']['device_category_id'];
+		$brands = $this->DeviceType->find('all', array(
+			'conditions' => array('DeviceType.device_category_id' => $category),
+			'fields' => array('DISTINCT Brand.name'),
+			'contain' => array('Brand')));
+		$brandsList = set::combine($brands, '{n}.Brand.id', '{n}.Brand.name');
+		$this->set('brandsList', $brandsList);
+		$this->layout = 'ajax';
+	}
+
+/**
+ * getByBrand method
+ *
+ * @return void
+ */
+	public function getByBrand() {
+		$brand = $this->request->data['Device']['brand_id'];
+		$deviceType = $this->DeviceType->find('list', array(
+			'conditions' => array('DeviceType.brand_id' => $brand),
+			'recursive' => -1
+		));
+		$this->set('deviceType', $deviceType);
+		$this->layout = 'ajax';
+	}
+
+/**
  * index method
  *
  * @return void
