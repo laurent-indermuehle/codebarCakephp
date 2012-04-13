@@ -7,7 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class DeviceCategoriesController extends AppController {
 
-
 /**
  * index method
  *
