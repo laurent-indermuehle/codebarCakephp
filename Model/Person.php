@@ -12,12 +12,28 @@ App::uses('AppModel', 'Model');
  * @property Operation $OperationTechnician
  */
 class Person extends AppModel {
+
+	// Have a more human displayField than the ID (in form only !)
+	// Thanks: http://book.cakephp.org/2.0/en/models/virtual-fields.html#virtual-fields-and-model-aliases
+	public function __construct($id = false, $table = null, $ds = null) {
+
+		// Let the parent do his job
+	    parent::__construct($id, $table, $ds);
+
+	    // Create the new displayField
+	    $this->virtualFields['full_name_with_sciper'] 
+	    	= sprintf('CONCAT(%s.first_name, " ", %s.last_name, " [", %s.sciper, "]")', 
+	    			  $this->alias, 
+	    			  $this->alias, 
+	    			  $this->alias);
+	}
+
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'id';
+	public $displayField = 'full_name_with_sciper'; // Virtual field
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 

@@ -81,7 +81,7 @@ class AppModel extends Model {
 
 		// All OK, we changed all dates to timestamp
 		// And let parent do his job
-		return parent::beforeValidate();;
+		return parent::beforeValidate();
 	}
 
 	// Implementation function for beforeValidate()
