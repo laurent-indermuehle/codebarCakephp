@@ -13,6 +13,36 @@ App::uses('AppModel', 'Model');
  * @property Problem $Problem
  */
 class Intervention extends AppModel {
+
+	// Override the paginate() function to join the DeviceType model too
+	// Thanks: http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#custom-query-pagination
+	public function paginate($conditions, $fields, $order, $limit, $page = 1, $recursive = null, $extra = array()) {
+
+		// I choose what I want
+		$this->recursive = -1;
+
+		// SELECT
+		$query = 'SELECT Intervention.*, Device.id, DeviceType.name
+			FROM interventions AS Intervention
+			LEFT JOIN devices AS Device
+				ON (Intervention.device_id = Device.id)
+			LEFT JOIN device_types AS DeviceType
+				ON (Device.device_type_id = DeviceType.id)';
+
+		// ORDER BY
+		if( ! is_null($order)) {
+			$query .= ' ORDER BY ';
+			foreach ($order as $field => $type)
+				$query .= $field . ' ' . $type; // no ',' because there is only one order field
+		}
+
+		// LIMIT
+		$query .= ' LIMIT ' . (($page - 1) * $limit) . ', ' . $limit . ';';
+
+		// Query !
+		return $this->query($query);
+	}
+
 /**
  * Validation rules
  *

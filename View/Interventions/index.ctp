@@ -18,7 +18,7 @@
 	<tr>
 		<td><?php echo h($intervention['Intervention']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($intervention['Device']['id'], array('controller' => 'devices', 'action' => 'view', $intervention['Device']['id'])); ?>
+			<?php echo $this->Html->link($intervention['DeviceType']['name'], array('controller' => 'devices', 'action' => 'view', $intervention['Device']['id'])); ?>
 		</td>
 		<td><?php echo h($intervention['Intervention']['entry_date']); ?>&nbsp;</td>
 		<td><?php echo h($intervention['Intervention']['description']); ?>&nbsp;</td>
