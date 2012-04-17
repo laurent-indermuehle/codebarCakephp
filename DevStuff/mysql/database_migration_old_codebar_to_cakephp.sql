@@ -10,7 +10,7 @@ ALTER TABLE `articles` ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,ADD COLUMN `is_available` TINYINT(1) NOT NULL DEFAULT 1 AFTER `is_active`
   ,ADD COLUMN `article_type_id` INT NOT NULL AFTER `is_available`
   ,ADD COLUMN `etat` VARCHAR(45) NULL AFTER `article_type_id`
-  ,ADD COLUMN `date_of_purchase` DATE NULL AFTER `etat`
+  ,ADD COLUMN `date_of_purchase` INT NULL AFTER `etat`
   ,CHANGE COLUMN `Article_Id` `serial_number` VARCHAR(50) NOT NULL DEFAULT ''
   ,CHANGE COLUMN `Article_Description` `description` VARCHAR(50) NOT NULL DEFAULT ''
   ,CHANGE COLUMN `Article_Appartient_A` `part_of` VARCHAR(50) NULL DEFAULT NULL
@@ -53,8 +53,8 @@ UPDATE `devices` SET `person_id` = (SELECT `id` AS `person_id`
   FROM `people`
   WHERE `devices`.`Mach_IdxSciper` = `people`.`sciper`);
 ALTER TABLE `devices` ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
-  ,ADD COLUMN `date_first_seen` DATETIME AFTER `id`
-  ,ADD COLUMN `date_end_of_warranty` DATETIME AFTER `id`
+  ,ADD COLUMN `date_first_seen` INT AFTER `id`
+  ,ADD COLUMN `date_end_of_warranty` INT AFTER `id`
   ,CHANGE COLUMN `Mach_ServiceTag` `serial_number` VARCHAR(30) NOT NULL DEFAULT ''
   ,CHANGE COLUMN `Mach_IdxTypeMachine` `device_type_id` INT(6) NOT NULL DEFAULT '0'
   ,DROP COLUMN `Mach_IdxSciper`
@@ -78,7 +78,7 @@ INSERT INTO `loans` SELECT * FROM `codebar`.`codebar_tbl_emprunt`;
 ALTER TABLE `loans` CHANGE COLUMN `Emprunt_Id` `id` INT(8) NOT NULL AUTO_INCREMENT
   ,CHANGE COLUMN `Emprunt_IdxSciper` `person_customer_id` INT(8) NOT NULL DEFAULT '0'
   ,CHANGE COLUMN `Emprunt_IdxTechnicien` `person_technician_id` INT(8) NOT NULL DEFAULT '0'
-  ,CHANGE COLUMN `Emprunt_Date` `borrow_date` INT(15) NOT NULL DEFAULT '0';
+  ,CHANGE COLUMN `Emprunt_Date` `borrow_date` INT NOT NULL DEFAULT '0';
   
 -- codebar_tbl_emprunt TO personal_loans
 DROP TABLE IF EXISTS `personal_loans`;
@@ -87,7 +87,7 @@ INSERT INTO `personal_loans` SELECT * FROM `codebar`.`codebar_tbl_emprunt` WHERE
 ALTER TABLE `personal_loans` ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,CHANGE COLUMN `Emprunt_Id` `loan_id` INT(8) NOT NULL
   ,CHANGE COLUMN `Emprunt_Raison` `personal_loan_reason_id` TEXT NULL DEFAULT NULL
-  ,CHANGE COLUMN `Emprunt_DateRetour` `planned_return_date` INT(15) NULL DEFAULT NULL
+  ,CHANGE COLUMN `Emprunt_DateRetour` `planned_return_date` INT NULL DEFAULT NULL
   ,DROP PRIMARY KEY 
   ,ADD PRIMARY KEY (`id`);
   
@@ -101,7 +101,7 @@ CREATE TABLE `loan_articles` AS
 ALTER TABLE `loan_articles` CHANGE COLUMN `ArtEmp_ID` `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,CHANGE COLUMN `ArtEmp_Idx_Emprunt` `loan_id` INT NOT NULL
   ,CHANGE COLUMN `ArtEmp_VisaTechnicien` `person_technician_return_id` INT NULL DEFAULT NULL
-  ,CHANGE COLUMN `ArtEmp_DateRetourReel` `actual_return_date` INT(15) NULL DEFAULT NULL
+  ,CHANGE COLUMN `ArtEmp_DateRetourReel` `actual_return_date` INT NULL DEFAULT NULL
   ,DROP COLUMN `ArtEmp_Idx_Article`
   ,ADD PRIMARY KEY (`id`);
   
@@ -116,7 +116,7 @@ ALTER TABLE `emails` CHANGE COLUMN `Email_ID` `id` INT NOT NULL AUTO_INCREMENT
   ,CHANGE COLUMN `Email_IdxEmprunt` `loan_id` INT NULL
   ,CHANGE COLUMN `Email_IdxIntervention` `intervention_id` INT NULL
   ,CHANGE COLUMN `Email_To` `to_person_email` VARCHAR(255) NOT NULL
-  ,CHANGE COLUMN `Email_Date` `date` INT(15) NOT NULL
+  ,CHANGE COLUMN `Email_Date` `date` INT NOT NULL
   ,CHANGE COLUMN `Email_From` `from_person_email` VARCHAR(255) NULL
   ,ADD COLUMN `from_person_id` INT NOT NULL AFTER `from_person_email`
   ,ADD COLUMN `to_person_id` INT NOT NULL AFTER `to_person_email`;

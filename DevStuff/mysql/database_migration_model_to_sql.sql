@@ -39,7 +39,7 @@ CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`articles` (
   `location_id` INT NOT NULL ,
   `article_type_id` INT NOT NULL ,
   `state` VARCHAR(45) NULL ,
-  `date_of_purchase` DATE NOT NULL ,
+  `date_of_purchase` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
@@ -115,7 +115,7 @@ CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`people` (
   `email` VARCHAR(50) NOT NULL ,
   `phone_number` VARCHAR(50) NULL ,
   `is_technician` TINYINT(1) NOT NULL ,
-  `is_banned` TINYINT(1) NOT NULL ,
+  `is_banned` INT NULL ,
   `loans_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
@@ -132,8 +132,8 @@ CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`devices` (
   `device_type_id` INT NOT NULL ,
   `device_id` INT(10) NULL ,
   `person_id` INT NOT NULL ,
-  `date_first_seen` DATETIME NULL ,
-  `date_end_of_warranty` DATETIME NULL ,
+  `date_first_seen` INT NULL ,
+  `date_end_of_warranty` INT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
@@ -145,10 +145,10 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`interventions` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `device_id` INT NOT NULL ,
-  `entry_date` DATETIME NOT NULL ,
+  `entry_date` INT NOT NULL ,
   `description` TEXT NOT NULL ,
-  `resolved_date` DATETIME NULL ,
-  `exit_date` DATETIME NULL ,
+  `resolved_date` INT NULL ,
+  `exit_date` INT NULL ,
   `diagnostic` TEXT NULL ,
   `comment` TEXT NULL ,
   `breakdown_found` TEXT NULL ,
@@ -173,7 +173,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`loans` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `borrow_date` DATETIME NOT NULL ,
+  `borrow_date` INT NOT NULL ,
   `person_technician_id` INT NOT NULL ,
   `person_customer_id` INT NOT NULL ,
   `technical_loan_id` INT NULL ,
@@ -191,7 +191,7 @@ CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`loan_articles` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `loan_id` INT NOT NULL ,
   `article_id` INT NOT NULL ,
-  `actual_return_date` DATETIME NULL DEFAULT NULL ,
+  `actual_return_date` INT NULL DEFAULT NULL ,
   `person_technician_return_id` INT NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -247,8 +247,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`estimates` (
   `id` INT NOT NULL ,
-  `entry_date` DATETIME NOT NULL ,
-  `deadline_date` DATETIME NOT NULL ,
+  `entry_date` INT NOT NULL ,
+  `deadline_date` INT NOT NULL ,
   `intervention_id` INT NOT NULL ,
   `external_intervention_number_id` INT NOT NULL ,
   PRIMARY KEY (`id`) )
@@ -265,7 +265,7 @@ CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`operations` (
   `person_technician_id` INT NOT NULL ,
   `intervention_id` INT NULL ,
   `estimate_id` INT NULL ,
-  `date` DATETIME NOT NULL ,
+  `date` INT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -287,7 +287,7 @@ CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`personal_loans` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `loan_id` INT NOT NULL ,
   `personal_loan_reason_id` INT NOT NULL ,
-  `planned_return_date` DATE NOT NULL ,
+  `planned_return_date` INT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -461,7 +461,7 @@ CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`emails` (
   `to_person_id` INT NOT NULL ,
   `from_person_email` VARCHAR(255) NULL ,
   `from_person_id` INT NOT NULL ,
-  `date` INT(15) NOT NULL ,
+  `date` INT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
