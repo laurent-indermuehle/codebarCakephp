@@ -14,8 +14,8 @@ class InterventionsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Intervention->recursive = 0;
-		$this->set('interventions', $this->paginate());
+		$interventions = $this->paginate();
+		$this->set(compact('interventions'));
 	}
 
 /**
@@ -29,7 +29,14 @@ class InterventionsController extends AppController {
 		if (!$this->Intervention->exists()) {
 			throw new NotFoundException(__('Invalid intervention'));
 		}
-		$this->set('intervention', $this->Intervention->read(null, $id));
+		$intervention = $this->Intervention->read(null, $id);
+		// retrive the device_type name.
+		$this->loadModel('DeviceType');
+		$deviceType = $this->DeviceType->find('first', array(
+			'fields' => array('name'),
+			'conditions' => array('DeviceType.id' => $this->Intervention->Device->field('device_type_id')),
+			'recursive' => -1));
+		$this->set(compact('intervention', 'deviceType'));
 	}
 
 /**

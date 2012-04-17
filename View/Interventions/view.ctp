@@ -8,7 +8,7 @@
 		</dd>
 		<dt><?php echo __('Device'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($intervention['Device']['id'], array('controller' => 'devices', 'action' => 'view', $intervention['Device']['id'])); ?>
+			<?php echo $this->Html->link($deviceType['DeviceType']['name'], array('controller' => 'devices', 'action' => 'view', $intervention['Device']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Entry Date'); ?></dt>

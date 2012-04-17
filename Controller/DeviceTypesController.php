@@ -30,8 +30,11 @@ class DeviceTypesController extends AppController {
  */
 	public function getByBrand() {
 		$brand = $this->request->data['Device']['brand_id'];
+		$category = $this->request->data['DeviceCategory']['device_category_id'];
 		$deviceType = $this->DeviceType->find('list', array(
-			'conditions' => array('DeviceType.brand_id' => $brand),
+			'conditions' => array(
+				'DeviceType.brand_id' => $brand,
+				'DeviceType.device_category_id' => $category),
 			'recursive' => -1
 		));
 		$this->set('deviceType', $deviceType);
