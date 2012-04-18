@@ -16,19 +16,9 @@
 			<?php echo $this->Html->link($loan['PersonTechnician']['id'], array('controller' => 'people', 'action' => 'view', $loan['PersonTechnician']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Emprunt Raison'); ?></dt>
-		<dd>
-			<?php echo h($loan['Loan']['Emprunt_Raison']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Borrow Date'); ?></dt>
 		<dd>
 			<?php echo h($loan['Loan']['borrow_date']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Emprunt DateRetour'); ?></dt>
-		<dd>
-			<?php echo h($loan['Loan']['Emprunt_DateRetour']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -103,7 +93,7 @@
 </div>
 <div class="related">
 	<h3><?php echo __('Related Loan Articles');?></h3>
-	<?php if (!empty($loan['LoanArticle'])):?>
+	<?php if (!empty($loan['DeviceLoan'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
@@ -115,17 +105,17 @@
 	</tr>
 	<?php
 		$i = 0;
-		foreach ($loan['LoanArticle'] as $loanArticle): ?>
+		foreach ($loan['DeviceLoan'] as $deviceLoan): ?>
 		<tr>
-			<td><?php echo $loanArticle['id'];?></td>
-			<td><?php echo $loanArticle['article_id'];?></td>
-			<td><?php echo $loanArticle['loan_id'];?></td>
-			<td><?php echo $loanArticle['person_technician_return_id'];?></td>
-			<td><?php echo $loanArticle['actual_return_date'];?></td>
+			<td><?php echo $deviceLoan['id'];?></td>
+			<td><?php echo $deviceLoan['device_id'];?></td>
+			<td><?php echo $deviceLoan['loan_id'];?></td>
+			<td><?php echo $deviceLoan['person_technician_return_id'];?></td>
+			<td><?php echo $deviceLoan['actual_return_date'];?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'loan_articles', 'action' => 'view', $loanArticle['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'loan_articles', 'action' => 'edit', $loanArticle['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'loan_articles', 'action' => 'delete', $loanArticle['id']), null, __('Are you sure you want to delete # %s?', $loanArticle['id'])); ?>
+				<?php echo $this->Html->link(__('View'), array('controller' => 'device_loans', 'action' => 'view', $deviceLoan['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'device_loans', 'action' => 'edit', $deviceLoan['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'loan_articles', 'action' => 'delete', $deviceLoan['id']), null, __('Are you sure you want to delete # %s?', $deviceLoan['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -158,10 +148,7 @@
 		<tr>
 			<td><?php echo $personalLoan['id'];?></td>
 			<td><?php echo $personalLoan['loan_id'];?></td>
-			<td><?php echo $personalLoan['Emprunt_IdxSciper'];?></td>
-			<td><?php echo $personalLoan['Emprunt_IdxTechnicien'];?></td>
 			<td><?php echo $personalLoan['personal_loan_reason_id'];?></td>
-			<td><?php echo $personalLoan['Emprunt_Date'];?></td>
 			<td><?php echo $personalLoan['planned_return_date'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'personal_loans', 'action' => 'view', $personalLoan['id'])); ?>

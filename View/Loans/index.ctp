@@ -5,9 +5,7 @@
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('person_customer_id');?></th>
 			<th><?php echo $this->Paginator->sort('person_technician_id');?></th>
-			<th><?php echo $this->Paginator->sort('Emprunt_Raison');?></th>
 			<th><?php echo $this->Paginator->sort('borrow_date');?></th>
-			<th><?php echo $this->Paginator->sort('Emprunt_DateRetour');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -20,9 +18,7 @@
 		<td>
 			<?php echo $this->Html->link($loan['PersonTechnician']['id'], array('controller' => 'people', 'action' => 'view', $loan['PersonTechnician']['id'])); ?>
 		</td>
-		<td><?php echo h($loan['Loan']['Emprunt_Raison']); ?>&nbsp;</td>
 		<td><?php echo h($loan['Loan']['borrow_date']); ?>&nbsp;</td>
-		<td><?php echo h($loan['Loan']['Emprunt_DateRetour']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $loan['Loan']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $loan['Loan']['id'])); ?>

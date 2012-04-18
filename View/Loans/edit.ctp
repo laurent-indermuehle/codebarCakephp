@@ -6,9 +6,7 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('person_customer_id');
 		echo $this->Form->input('person_technician_id');
-		echo $this->Form->input('Emprunt_Raison');
 		echo $this->Form->input('borrow_date');
-		echo $this->Form->input('Emprunt_DateRetour');
 		echo $this->Form->input('PersonalLoan');
 		echo $this->Form->input('TechnicalLoan');
 	?>

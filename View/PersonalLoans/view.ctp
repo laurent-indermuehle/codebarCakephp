@@ -11,24 +11,9 @@
 			<?php echo $this->Html->link($personalLoan['Loan']['id'], array('controller' => 'loans', 'action' => 'view', $personalLoan['Loan']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Emprunt IdxSciper'); ?></dt>
-		<dd>
-			<?php echo h($personalLoan['PersonalLoan']['Emprunt_IdxSciper']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Emprunt IdxTechnicien'); ?></dt>
-		<dd>
-			<?php echo h($personalLoan['PersonalLoan']['Emprunt_IdxTechnicien']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Personal Loan Reason'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($personalLoan['PersonalLoanReason']['id'], array('controller' => 'personal_loan_reasons', 'action' => 'view', $personalLoan['PersonalLoanReason']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Emprunt Date'); ?></dt>
-		<dd>
-			<?php echo h($personalLoan['PersonalLoan']['Emprunt_Date']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Planned Return Date'); ?></dt>

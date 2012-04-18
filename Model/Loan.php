@@ -92,8 +92,34 @@ class Loan extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'LoanArticle' => array(
-			'className' => 'LoanArticle',
+		'DeviceLoan' => array(
+			'className' => 'DeviceLoan',
+			'foreignKey' => 'loan_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'PersonalLoan' => array(
+			'className' => 'PersonalLoan',
+			'foreignKey' => 'loan_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'TechnicalLoan' => array(
+			'className' => 'TechnicalLoan',
 			'foreignKey' => 'loan_id',
 			'dependent' => false,
 			'conditions' => '',
@@ -106,44 +132,4 @@ class Loan extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
-
-/**
- * hasAndBelongsToMany associations
- *
- * @var array
- */
-	public $hasAndBelongsToMany = array(
-		'PersonalLoan' => array(
-			'className' => 'PersonalLoan',
-			'joinTable' => 'personal_loans',
-			'foreignKey' => 'loan_id',
-			'associationForeignKey' => 'personal_id',
-			'unique' => 'keepExisting',
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-			'deleteQuery' => '',
-			'insertQuery' => ''
-		),
-		'TechnicalLoan' => array(
-			'className' => 'TechnicalLoan',
-			'joinTable' => 'technical_loans',
-			'foreignKey' => 'loan_id',
-			'associationForeignKey' => 'technical_id',
-			'unique' => 'keepExisting',
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-			'deleteQuery' => '',
-			'insertQuery' => ''
-		)
-	);
-
 }

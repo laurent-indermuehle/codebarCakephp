@@ -4,10 +4,7 @@
 		<legend><?php echo __('Add Personal Loan'); ?></legend>
 	<?php
 		echo $this->Form->input('loan_id');
-		echo $this->Form->input('Emprunt_IdxSciper');
-		echo $this->Form->input('Emprunt_IdxTechnicien');
 		echo $this->Form->input('personal_loan_reason_id');
-		echo $this->Form->input('Emprunt_Date');
 		echo $this->Form->input('planned_return_date');
 	?>
 	</fieldset>
