@@ -40,7 +40,7 @@ class Intervention extends AppModel {
 		$query .= ' LIMIT ' . (($page - 1) * $limit) . ', ' . $limit . ';';
 
 		// Query !
-		return $this->query($query);
+		return $this->afterFind($this->query($query), null);
 	}
 
 /**
