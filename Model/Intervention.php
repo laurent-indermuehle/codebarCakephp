@@ -22,12 +22,27 @@ class Intervention extends AppModel {
 		$this->recursive = -1;
 
 		// SELECT
-		$query = 'SELECT Intervention.*, Device.id, DeviceType.name
+		$query = 'SELECT 
+					Intervention.*, 
+					Device.id, 
+					DeviceType.name, 
+					OperationEntryDate.date AS entry_date,
+					OperationResolvedDate.date AS resolved_date,
+					OperationExitDate.date AS exit_date
 			FROM interventions AS Intervention
 			LEFT JOIN devices AS Device
 				ON (Intervention.device_id = Device.id)
 			LEFT JOIN device_types AS DeviceType
-				ON (Device.device_type_id = DeviceType.id)';
+				ON (Device.device_type_id = DeviceType.id)
+			LEFT JOIN operations AS OperationEntryDate
+				ON Intervention.id = OperationEntryDate.intervention_id
+				AND OperationEntryDate.operation_type_id = 1
+			LEFT JOIN operations AS OperationResolvedDate
+				ON Intervention.id = OperationResolvedDate.intervention_id
+				AND OperationResolvedDate.operation_type_id = 8
+			LEFT JOIN operations AS OperationExitDate
+				ON Intervention.id = OperationExitDate.intervention_id
+				AND OperationExitDate.operation_type_id = 8';
 
 		// ORDER BY
 		if( ! is_null($order)) {
@@ -41,6 +56,24 @@ class Intervention extends AppModel {
 
 		// Query !
 		return $this->afterFind($this->query($query), null);
+	}
+
+	
+
+	public function getDate($intervention_id, $operation_type_id) {
+		$value = $this->Operation->find('all', array(
+				'fields' => array('date'),
+				'conditions' => array(
+					'Operation.intervention_id' => $intervention_id,
+					'Operation.operation_type_id' => $operation_type_id),
+				'recursive' => -1));
+		if(isset($value[0])) {
+			$date = $value[0]['Operation']['date'];
+			return $date;
+		}
+		else {
+			return null;
+		}
 	}
 
 /**
@@ -59,16 +92,6 @@ class Intervention extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'entry_date' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'description' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -78,7 +101,7 @@ class Intervention extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		)
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

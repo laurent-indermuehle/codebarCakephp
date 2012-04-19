@@ -26,10 +26,10 @@ INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('4', 'sd
 INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('5', 'chargeur');
 INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('6', 'graveur DVD');
 INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('7', 'souris');
-INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('8', 'câble réseau');
-INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('9', 'carte réseau');
-INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('10', 'télécommande');
-INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('11', 'clé usb');
+INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('8', 'cable reseau');
+INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('9', 'carte reseau');
+INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('10', 'telecommande');
+INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('11', 'cle usb');
 INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('12', 'saccoche');
 INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('13', 'floppy');
 INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('14', 'dock station');
@@ -148,8 +148,21 @@ UPDATE `codebarcakephp`.`device_types` SET `brand_id`=4, `device_category_id`=1 
 
 UPDATE `codebarcakephp`.`devices` SET `device_type_id`=105 WHERE `serial_number`='VGA-DVI05';
 
-
 INSERT INTO `codebarcakephp`.`languages` (`name`) VALUES ('Français');
 INSERT INTO `codebarcakephp`.`languages` (`name`) VALUES ('Anglais');
 INSERT INTO `codebarcakephp`.`languages` (`name`) VALUES ('Allemand');
 INSERT INTO `codebarcakephp`.`languages` (`name`) VALUES ('Italien');
+
+INSERT INTO `codebarcakephp`.`operation_types` (`id`, `name`, `operation_category_id`) VALUES (1, 'Creation', 1);
+INSERT INTO `codebarcakephp`.`operation_types` (`id`, `name`, `operation_category_id`) VALUES (2, 'Diagnostics', 1);
+INSERT INTO `codebarcakephp`.`operation_types` (`id`, `name`, `operation_category_id`) VALUES (3, 'Reparation Software', 1);
+INSERT INTO `codebarcakephp`.`operation_types` (`id`, `name`, `operation_category_id`) VALUES (4, 'Tel. Hotline', 1);
+INSERT INTO `codebarcakephp`.`operation_types` (`id`, `name`, `operation_category_id`) VALUES (5, 'Attente Tech.', 1);
+INSERT INTO `codebarcakephp`.`operation_types` (`id`, `name`, `operation_category_id`) VALUES (6, 'Test', 1);
+INSERT INTO `codebarcakephp`.`operation_types` (`id`, `name`, `operation_category_id`) VALUES (7, 'Prevenir', 1);
+INSERT INTO `codebarcakephp`.`operation_types` (`id`, `name`, `operation_category_id`) VALUES (8, 'Terminee', 1);
+INSERT INTO `codebarcakephp`.`operation_types` (`id`, `name`, `operation_category_id`) VALUES (9, 'Rendue', 1);
+
+INSERT INTO `codebarcakephp`.`operation_categories` (`id`, `name`) VALUES (1, 'Intervention');
+INSERT INTO `codebarcakephp`.`operation_categories` (`id`, `name`) VALUES (2, 'Devis');
+INSERT INTO `codebarcakephp`.`operation_categories` (`id`, `name`) VALUES (3, 'Intervention rapide (guichet)');

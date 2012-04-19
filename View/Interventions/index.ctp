@@ -20,13 +20,13 @@
 		<td>
 			<?php echo $this->Html->link($intervention['DeviceType']['name'], array('controller' => 'devices', 'action' => 'view', $intervention['Device']['id'])); ?>
 		</td>
-		<td><?php echo h($intervention['Intervention']['entry_date']); ?>&nbsp;</td>
+		<td><?php echo h($intervention['OperationEntryDate']['entry_date']); ?>&nbsp;</td>
 		<td><?php echo h($intervention['Intervention']['description']); ?>&nbsp;</td>
 		<td><?php echo h($intervention['Intervention']['diagnostic']); ?>&nbsp;</td>
 		<td><?php echo h($intervention['Intervention']['comment']); ?>&nbsp;</td>
 		<td><?php echo h($intervention['Intervention']['breakdown_found']); ?>&nbsp;</td>
-		<td><?php echo h($intervention['Intervention']['resolved_date']); ?>&nbsp;</td>
-		<td><?php echo h($intervention['Intervention']['exit_date']); ?>&nbsp;</td>
+		<td><?php echo h($intervention['OperationResolvedDate']['resolved_date']); ?>&nbsp;</td>
+		<td><?php echo h($intervention['OperationExitDate']['exit_date']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $intervention['Intervention']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $intervention['Intervention']['id'])); ?>

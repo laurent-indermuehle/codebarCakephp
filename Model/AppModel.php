@@ -37,8 +37,7 @@ class AppModel extends Model {
 	// -- ---------- --
 	// -- HUMAN DATE -- BEGIN
 	// -- ---------- --
-
-	// We want to have human date in views
+/*	// We want to have human date in views
 	public function afterFind($results, $primary) {
 
 		// Let parent do his job
@@ -110,4 +109,5 @@ class AppModel extends Model {
 	// -- ---------- --
 	// -- HUMAN DATE -- END
 	// -- ---------- --
+*/
 }

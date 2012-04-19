@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('Entry Date'); ?></dt>
 		<dd>
-			<?php echo h($intervention['Intervention']['entry_date']); ?>
+			<?php echo h($entryDate); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Description'); ?></dt>
@@ -38,12 +38,12 @@
 		</dd>
 		<dt><?php echo __('Resolved Date'); ?></dt>
 		<dd>
-			<?php echo h($intervention['Intervention']['resolved_date']); ?>
+			<?php echo h($resolvedDate); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Exit Date'); ?></dt>
 		<dd>
-			<?php echo h($intervention['Intervention']['exit_date']); ?>
+			<?php echo h($exitDate); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -52,7 +52,6 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit Intervention'), array('action' => 'edit', $intervention['Intervention']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Intervention'), array('action' => 'delete', $intervention['Intervention']['id']), null, __('Are you sure you want to delete # %s?', $intervention['Intervention']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Interventions'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Intervention'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Devices'), array('controller' => 'devices', 'action' => 'index')); ?> </li>

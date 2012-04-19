@@ -233,27 +233,21 @@ CREATE TABLE `interventions` AS
    LEFT JOIN `codebarcakephp`.`devices` 
    ON `codebarcakephp`.`devices`.`serial_number` = `codebar`.`codebar_tbl_intervention`.`Inter_IdxServiceTag`);
 ALTER TABLE `interventions` CHANGE COLUMN `Inter_ID` `id` INT NOT NULL
-  ,CHANGE COLUMN `Inter_Date` `entry_date_unix` INT NOT NULL
   ,CHANGE COLUMN `Inter_Symptome` `description` TEXT NOT NULL
   ,CHANGE COLUMN `Inter_Diagnostic` `diagnostic` TEXT NULL
   ,CHANGE COLUMN `Inter_Commentaires` `comment` TEXT NULL
   ,CHANGE COLUMN `Inter_PanneTrouvee` `breakdown_found` TEXT NULL
-  ,CHANGE COLUMN `Inter_DateReparation` `resolved_date_unix` INT NULL
+  ,DROP COLUMN `Inter_DateReparation`
+  ,DROP COLUMN `Inter_Date`
   ,DROP COLUMN `Inter_IdxTechnicien`
   ,DROP COLUMN `Inter_IdxServiceTag`
   ,DROP COLUMN `Inter_IdxTypeIntervention`
-  ,DROP COLUMN `Inter_Repare`
-  ,ADD COLUMN `entry_date` DATETIME NOT NULL AFTER `entry_date_unix`
-  ,ADD COLUMN `resolved_date` DATETIME NOT NULL AFTER `resolved_date_unix`
-  ,ADD COLUMN `exit_date` DATETIME NULL;
+  ,DROP COLUMN `Inter_Repare`;
 ALTER TABLE `codebarcakephp`.`interventions` 
   CHANGE COLUMN `id` `id` INT NOT NULL AUTO_INCREMENT  FIRST 
   ,CHANGE COLUMN `device_id` `device_id` INT NOT NULL
+  ,ADD INDEX `device_id` USING BTREE (`device_id` ASC)
   ,ADD PRIMARY KEY (`id`) ;
-UPDATE `interventions` SET `entry_date` = from_unixtime(`entry_date_unix`);
-ALTER TABLE `interventions` DROP COLUMN `entry_date_unix`;
-UPDATE `interventions` SET `resolved_date` = from_unixtime(`resolved_date_unix`);
-ALTER TABLE `interventions` DROP COLUMN `resolved_date_unix`;
   
 ### codebar_tbl_intervention_etat TO operations
 CREATE TABLE `operations` LIKE `codebar`.`codebar_tbl_intervention_etat`;

@@ -144,10 +144,7 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`interventions` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `device_id` INT NOT NULL ,
-  `entry_date` DATETIME NOT NULL ,
   `description` TEXT NOT NULL ,
-  `resolved_date` DATETIME NULL ,
-  `exit_date` DATETIME NULL ,
   `diagnostic` TEXT NULL ,
   `comment` TEXT NULL ,
   `breakdown_found` TEXT NULL ,

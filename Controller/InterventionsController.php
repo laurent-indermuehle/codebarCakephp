@@ -14,8 +14,8 @@ class InterventionsController extends AppController {
  * @return void
  */
 	public function index() {
-		$interventions = $this->paginate();
-		$this->set(compact('interventions'));
+		$this->Intervention->recursive = -1;
+		$this->set('interventions', $this->paginate());
 	}
 
 /**
@@ -36,7 +36,10 @@ class InterventionsController extends AppController {
 			'fields' => array('name'),
 			'conditions' => array('DeviceType.id' => $this->Intervention->Device->field('device_type_id')),
 			'recursive' => -1));
-		$this->set(compact('intervention', 'deviceType'));
+		$entryDate = $this->Intervention->getDate($id, 1);
+		$resolvedDate = $this->Intervention->getDate($id, 8);
+		$exitDate = $this->Intervention->getDate($id, 9);
+		$this->set(compact('intervention', 'deviceType', 'entryDate', 'resolvedDate', 'exitDate'));
 	}
 
 /**
@@ -82,28 +85,9 @@ class InterventionsController extends AppController {
 		}
 		$devices = $this->Intervention->Device->find('list');
 		$problems = $this->Intervention->Problem->find('list');
-		$this->set(compact('devices', 'problems'));
-	}
-
-/**
- * delete method
- *
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
-		$this->Intervention->id = $id;
-		if (!$this->Intervention->exists()) {
-			throw new NotFoundException(__('Invalid intervention'));
-		}
-		if ($this->Intervention->delete()) {
-			$this->Session->setFlash(__('Intervention deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Intervention was not deleted'));
-		$this->redirect(array('action' => 'index'));
+		$entryDate = $this->Intervention->getDate($id, 1);
+		$resolvedDate = $this->Intervention->getDate($id, 8);
+		$exitDate = $this->Intervention->getDate($id, 9);
+		$this->set(compact('devices', 'problems', 'entryDate', 'resolvedDate', 'exitDate'));
 	}
 }

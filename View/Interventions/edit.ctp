@@ -5,14 +5,10 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('device_id');
-		echo $this->Form->input('entry_date');
 		echo $this->Form->input('description');
 		echo $this->Form->input('diagnostic');
 		echo $this->Form->input('comment');
 		echo $this->Form->input('breakdown_found');
-		echo $this->Form->input('resolved_date');
-		echo $this->Form->input('exit_date');
-		echo $this->Form->input('Problem');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
