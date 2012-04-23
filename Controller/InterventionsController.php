@@ -7,7 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class InterventionsController extends AppController {
 
-
 /**
  * index method
  *
@@ -16,30 +15,6 @@ class InterventionsController extends AppController {
 	public function index() {
 		$this->Intervention->recursive = -1;
 		$this->set('interventions', $this->paginate());
-	}
-
-/**
- * view method
- *
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		$this->Intervention->id = $id;
-		if (!$this->Intervention->exists()) {
-			throw new NotFoundException(__('Invalid intervention'));
-		}
-		$intervention = $this->Intervention->read(null, $id);
-		// retrive the device_type name.
-		$this->loadModel('DeviceType');
-		$deviceType = $this->DeviceType->find('first', array(
-			'fields' => array('name'),
-			'conditions' => array('DeviceType.id' => $this->Intervention->Device->field('device_type_id')),
-			'recursive' => -1));
-		$entryDate = $this->Intervention->getDate($id, 1);
-		$resolvedDate = $this->Intervention->getDate($id, 8);
-		$exitDate = $this->Intervention->getDate($id, 9);
-		$this->set(compact('intervention', 'deviceType', 'entryDate', 'resolvedDate', 'exitDate'));
 	}
 
 /**
@@ -82,12 +57,18 @@ class InterventionsController extends AppController {
 			}
 		} else {
 			$this->request->data = $this->Intervention->read(null, $id);
+			// retrive the device_type name.
+			$this->loadModel('DeviceType');
+			$deviceType = $this->DeviceType->find('first', array(
+				'fields' => array('name'),
+				'conditions' => array('DeviceType.id' => $this->Intervention->Device->field('device_type_id')),
+				'recursive' => -1));
+			$device = $this->Intervention->field('device_id');
+			$problems = $this->Intervention->Problem->find('list');
+			$entryDate = $this->Intervention->getDate($id, 1);
+			$resolvedDate = $this->Intervention->getDate($id, 8);
+			$exitDate = $this->Intervention->getDate($id, 9);
 		}
-		$devices = $this->Intervention->Device->find('list');
-		$problems = $this->Intervention->Problem->find('list');
-		$entryDate = $this->Intervention->getDate($id, 1);
-		$resolvedDate = $this->Intervention->getDate($id, 8);
-		$exitDate = $this->Intervention->getDate($id, 9);
-		$this->set(compact('devices', 'problems', 'entryDate', 'resolvedDate', 'exitDate'));
+		$this->set(compact('device', 'deviceType', 'problems', 'entryDate', 'resolvedDate', 'exitDate'));
 	}
 }

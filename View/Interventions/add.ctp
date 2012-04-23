@@ -1,41 +1,84 @@
-<div class="interventions form">
-<?php echo $this->Form->create('Intervention');?>
-	<fieldset>
-		<legend><?php echo __('Add Intervention'); ?></legend>
-	<?php
-		echo $this->Form->input('device_id');
-		echo $this->Form->input('entry_date');
-		echo $this->Form->input('description');
-		echo $this->Form->input('diagnostic');
-		echo $this->Form->input('comment');
-		echo $this->Form->input('breakdown_found');
-		echo $this->Form->input('resolved_date');
-		echo $this->Form->input('exit_date');
-		echo $this->Form->input('Problem');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<div class="grid_12">
+	<div class="box">
+		<h2><?php echo __('Add Intervention'); ?><span class="1"></span><span class="r"></span></h2>
+		<div class="block">
+		<?php echo $this->Form->create('Intervention');?>
+			<section class="form_row">
+				<div class="grid_2"><label><?php echo __('device_id'); ?></label></div>
+				<div class="grid_10">
+					<div class="block_content"><?php echo $this->Form->input('device_id', array('label' => false, 'class' => 'default')); ?></div>
+				</div>
+				<div class="clear"></div>
+			</section>
+			<section class="form_row">
+				<div class="grid_2"><label><?php echo __('entry_date'); ?></label></div>
+				<div class="grid_10">
+					<div class="block_content"><?php echo $this->Form->input('entry_date', array('label' => false, 'class' => 'default')); ?></div>
+				</div>
+				<div class="clear"></div>
+			</section>
+			<section class="form_row">
+				<div class="grid_2"><label><?php echo __('description'); ?></label></div>
+				<div class="grid_10">
+					<div class="block_content"><?php echo $this->Form->input('description', array('label' => false, 'class' => 'default')); ?></div>
+				</div>
+				<div class="clear"></div>
+			</section>
+			<section class="form_row">
+				<div class="grid_2"><label><?php echo __('diagnostic'); ?></label></div>
+				<div class="grid_10">
+					<div class="block_content"><?php echo $this->Form->input('diagnostic', array('label' => false, 'class' => 'default')); ?></div>
+				</div>
+				<div class="clear"></div>
+			</section>
+			<section class="form_row">
+				<div class="grid_2"><label><?php echo __('comment'); ?></label></div>
+				<div class="grid_10">
+					<div class="block_content"><?php echo $this->Form->input('comment', array('label' => false, 'class' => 'default')); ?></div>
+				</div>
+				<div class="clear"></div>
+			</section>
+			<section class="form_row">
+				<div class="grid_2"><label><?php echo __('breakdown_found'); ?></label></div>
+				<div class="grid_10">
+					<div class="block_content"><?php echo $this->Form->input('breakdown_found', array('label' => false, 'class' => 'default')); ?></div>
+				</div>
+				<div class="clear"></div>
+			</section>
+			<section class="form_row">
+				<div class="grid_2"><label><?php echo __('Problem'); ?></label></div>
+				<div class="grid_10">
+					<div class="block_content"><?php echo $this->Form->input('Problem', array('label' => false, 'class' => 'default')); ?></div>
+				</div>
+				<div class="clear"></div>
+			</section>
+			<section class="form_row">
+				<div class="grid_2"></div>
+				<div class="grid_10">
+					<div class="block_content"><?php echo $this->Form->end(array('label' => __('Submit'), 'class' => 'button blue medium')); ?></div>
+				</div>
+				<div class="clear"></div>
+			</section>
+		</div><!-- block -->
+	</div><!-- box -->
+</div><!-- grid_12 -->
 
-		<li><?php echo $this->Html->link(__('List Interventions'), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Devices'), array('controller' => 'devices', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Device'), array('controller' => 'devices', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Emails'), array('controller' => 'emails', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Email'), array('controller' => 'emails', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Estimates'), array('controller' => 'estimates', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Estimate'), array('controller' => 'estimates', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List External Intervention Numbers'), array('controller' => 'external_intervention_numbers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New External Intervention Number'), array('controller' => 'external_intervention_numbers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Operations'), array('controller' => 'operations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Operation'), array('controller' => 'operations', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Technical Loans'), array('controller' => 'technical_loans', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Technical Loan'), array('controller' => 'technical_loans', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Problems'), array('controller' => 'problems', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Problem'), array('controller' => 'problems', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<?php $this->start('sidebar'); ?>
+	<li><?php echo $this->Html->link(__('List Interventions'), array('action' => 'index'));?></li>
+	<li><?php echo $this->Html->link(__('List Devices'), array('controller' => 'devices', 'action' => 'index')); ?> </li>
+	<li><?php echo $this->Html->link(__('New Device'), array('controller' => 'devices', 'action' => 'add')); ?> </li>
+	<li><?php echo $this->Html->link(__('List Documents'), array('controller' => 'documents', 'action' => 'index')); ?> </li>
+	<li><?php echo $this->Html->link(__('New Document'), array('controller' => 'documents', 'action' => 'add')); ?> </li>
+	<li><?php echo $this->Html->link(__('List Emails'), array('controller' => 'emails', 'action' => 'index')); ?> </li>
+	<li><?php echo $this->Html->link(__('New Email'), array('controller' => 'emails', 'action' => 'add')); ?> </li>
+	<li><?php echo $this->Html->link(__('List Estimates'), array('controller' => 'estimates', 'action' => 'index')); ?> </li>
+	<li><?php echo $this->Html->link(__('New Estimate'), array('controller' => 'estimates', 'action' => 'add')); ?> </li>
+	<li><?php echo $this->Html->link(__('List External Intervention Numbers'), array('controller' => 'external_intervention_numbers', 'action' => 'index')); ?> </li>
+	<li><?php echo $this->Html->link(__('New External Intervention Number'), array('controller' => 'external_intervention_numbers', 'action' => 'add')); ?> </li>
+	<li><?php echo $this->Html->link(__('List Operations'), array('controller' => 'operations', 'action' => 'index')); ?> </li>
+	<li><?php echo $this->Html->link(__('New Operation'), array('controller' => 'operations', 'action' => 'add')); ?> </li>
+	<li><?php echo $this->Html->link(__('List Technical Loans'), array('controller' => 'technical_loans', 'action' => 'index')); ?> </li>
+	<li><?php echo $this->Html->link(__('New Technical Loan'), array('controller' => 'technical_loans', 'action' => 'add')); ?> </li>
+	<li><?php echo $this->Html->link(__('List Problems'), array('controller' => 'problems', 'action' => 'index')); ?> </li>
+	<li><?php echo $this->Html->link(__('New Problem'), array('controller' => 'problems', 'action' => 'add')); ?> </li>
+<?php $this->end(); ?>

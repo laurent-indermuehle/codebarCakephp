@@ -16,6 +16,7 @@ class Intervention extends AppModel {
 
 	// Override the paginate() function to join the DeviceType model too
 	// Thanks: http://book.cakephp.org/2.0/en/core-libraries/components/pagination.html#custom-query-pagination
+	/*
 	public function paginate($conditions, $fields, $order, $limit, $page = 1, $recursive = null, $extra = array()) {
 
 		// I choose what I want
@@ -42,7 +43,7 @@ class Intervention extends AppModel {
 				AND OperationResolvedDate.operation_type_id = 8
 			LEFT JOIN operations AS OperationExitDate
 				ON Intervention.id = OperationExitDate.intervention_id
-				AND OperationExitDate.operation_type_id = 8';
+				AND OperationExitDate.operation_type_id = 9';
 
 		// ORDER BY
 		if( ! is_null($order)) {
@@ -57,7 +58,7 @@ class Intervention extends AppModel {
 		// Query !
 		return $this->afterFind($this->query($query), null);
 	}
-
+*/
 	
 
 	public function getDate($intervention_id, $operation_type_id) {
