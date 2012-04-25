@@ -7,7 +7,6 @@
 tmp/*
 DevStuff/xSystem/*
 webroot/css/chosen.css
-webroot/css/config.css
 webroot/css/grid.css
 webroot/css/ie8.css
 webroot/css/reset.css
@@ -27,10 +26,11 @@ webroot/css/jquery.ui.slider.css
 webroot/css/jquery.ui.tabs.css
 webroot/css/jquery.ui.datepicker.css
 webroot/css/jquery.ui.progressbar.css
+webroot/css/demo_page.css
+webroot/css/demo_table_jui.css
+webroot/css/images/*
 webroot/images/*
-webroot/js/chosen.jquery.js
 webroot/js/chosen.jquery.min.js
-webroot/js/head_scripts.js
 webroot/js/html5.js
 webroot/js/jquery.dataTables.min.js
 webroot/js/jquery.placeholder.js
@@ -38,3 +38,4 @@ webroot/js/jquery.uniform.js
 webroot/js/scriptbreaker-multiple-accordion-1.js
 webroot/js/scripts.js
 webroot/js/ui_calls.js
+webroot/js/jquery-ui-1.8.16.custom.min.js

@@ -1,27 +1,46 @@
 <div class="grid_12">
 	<div class="box">
-		<h2><?php echo __('Interventions');?><span class="1"></span><span class="r"></span></h2>
+		<h2>
+			<?php echo __('Interventions');?>
+			<span class="1"></span><span class="r"></span>
+		</h2>
 		<div class="block">
 			<div class="block_in">
-			<table>
+			<!-- BEGIN TABLE -->
+			<table class="datatable">
+				<thead>
+				<?php echo $this->Html->tableHeaders(array(
+					'Id', 'Description', 'Diagnostic', 'Breakdown found', 'Actions')); ?>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<?php echo $this->Html->scriptStart(array('inline' => false)); ?>
+				$('.datatable').dataTable({
+				    sAjaxSource: '<?php echo $this->Html->url(array('action' => 'index')); ?>',
+					bProcessing: true,
+					bServerSide: true,
+					bStateSave: true
+				});
+			<?php echo $this->Html->scriptEnd(); ?>
+
+			<?php /*
+			<div class="dataTables_wrapper" id="basictable_wrapper">
+			<table class="display" id="bastictable">
 			<thead>
 			<tr>
-				<th><?php echo $this->Paginator->sort('id');?></th>
-				<?php //echo $this->Paginator->sort('device_id');?>
-				<?php //echo $this->Paginator->sort('entry_date');?>
-				<th><?php echo $this->Paginator->sort('description');?></th>
-				<th><?php echo $this->Paginator->sort('diagnostic');?></th>
-				<?php //echo $this->Paginator->sort('comment');?>
-				<th><?php echo $this->Paginator->sort('breakdown_found');?></th>
-				<?php //echo $this->Paginator->sort('resolved_date');?>
-				<?php //echo $this->Paginator->sort('exit_date');?>
-				<th class="actions"><?php echo __('Actions');?></th>
+				<th><?php //echo $this->Paginator->sort('id'); ?></th>
+				<th><?php //echo $this->Paginator->sort('description');?></th>
+				<th><?php //echo $this->Paginator->sort('diagnostic');?></th>
+				<th><?php //echo $this->Paginator->sort('breakdown_found');?></th>
+				<th><?php //echo __('Actions');?></th>
+				<?php //$this->Paginator->sort('device_id'); $this->Paginator->sort('entry_date'); $this->Paginator->sort('comment'); $this->Paginator->sort('resolved_date'); $this->Paginator->sort('exit_date'); ?>
 			</tr>
 			</thead>
 			<tbody>
 			<?php
 			foreach ($interventions as $intervention): ?>
-			<tr>
+			<tr class="gradeX">
 				<td><?php echo h($intervention['Intervention']['id']); ?>&nbsp;</td>
 				<?php //echo $this->Html->link($intervention['DeviceType']['name'], array('controller' => 'devices', 'action' => 'view', $intervention['Device']['id'])); ?>
 				<?php //echo h($intervention['OperationEntryDate']['entry_date']); ?>
@@ -40,19 +59,27 @@
 			<?php endforeach; ?>
 			</tbody>
 			</table>
-			<p> 
-			<?php echo $this->Paginator->counter(array(
-				'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-			)); ?>
-			</p>
+			<div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
+				<div class="dataTables_info" id="basictable_info"> 
+				<?php echo $this->Paginator->counter(array(
+					'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+				)); ?>
+				</div>
 
-			<div class="paging">
-			<?php
-				echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-				echo $this->Paginator->numbers(array('separator' => ''));
-				echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-			?>
-			</div><!-- paging -->
+				<div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers" id="basictable_paginate">
+				<?php
+					echo $this->Paginator->first('|< '. __('first'), array('class' => 'first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default', 'id' => 'basictable_first'));
+					echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'previous fg-button ui-button ui-state-default', 'id' => 'basictable_previous'));
+					echo '<span>';
+					echo $this->Paginator->numbers(array('separator' => '', array(), null, array('class' => 'fg-button ui-button ui-state-default')));
+					echo '</span>';
+					echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next fg-button ui-button ui-state-default', 'id' => 'basictable_next'));
+					echo $this->Paginator->last(__('last') . ' >|', array('class' => 'last ui-corner-tr ui-corner-br fg-button ui-button ui-button ui-state-default', 'id' => 'basictable_last'));
+				?>
+				</div><!-- paging -->
+			</div><!-- fg-toolbar -->
+			</div><!-- dataTAbles_wrapper -->
+			*/ ?>
 			</div><!-- block_in -->
 		</div><!-- block -->
 	</div><!-- box -->

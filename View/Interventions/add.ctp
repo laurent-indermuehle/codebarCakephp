@@ -2,53 +2,59 @@
 	<div class="box">
 		<h2><?php echo __('Add Intervention'); ?><span class="1"></span><span class="r"></span></h2>
 		<div class="block">
-		<?php echo $this->Form->create('Intervention');?>
+		<div class="block_in">
+		<?php echo $this->Form->create('Intervention', array(
+			'inputDefaults' => array(
+				'label' => false,
+				'div' => false
+			)
+		)); ?>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('device_id'); ?></label></div>
+				<div class="grid_2"><label><?php echo __('Device'); ?></label></div>
 				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('device_id', array('label' => false, 'class' => 'default')); ?></div>
+					<div class="block_content"><?php echo $this->Form->input('device_id', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('entry_date'); ?></label></div>
+				<div class="grid_2"><label><?php echo __('Entry Date'); ?></label></div>
 				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('entry_date', array('label' => false, 'class' => 'default')); ?></div>
+					<div class="block_content"><?php echo $this->Form->input('entry_date', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('description'); ?></label></div>
+				<div class="grid_2"><label><?php echo __('Description'); ?></label></div>
 				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('description', array('label' => false, 'class' => 'default')); ?></div>
+					<div class="block_content"><?php echo $this->Form->input('description', array('class' => 'default input80pc', 'placeholder' => 'Type your text here')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('diagnostic'); ?></label></div>
+				<div class="grid_2"><label><?php echo __('Diagnostic'); ?></label></div>
 				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('diagnostic', array('label' => false, 'class' => 'default')); ?></div>
+					<div class="block_content"><?php echo $this->Form->input('diagnostic', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('comment'); ?></label></div>
+				<div class="grid_2"><label><?php echo __('Comment'); ?></label></div>
 				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('comment', array('label' => false, 'class' => 'default')); ?></div>
+					<div class="block_content"><?php echo $this->Form->input('comment', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
 				<div class="grid_2"><label><?php echo __('breakdown_found'); ?></label></div>
 				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('breakdown_found', array('label' => false, 'class' => 'default')); ?></div>
+					<div class="block_content"><?php echo $this->Form->input('breakdown_found', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
 				<div class="grid_2"><label><?php echo __('Problem'); ?></label></div>
 				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('Problem', array('label' => false, 'class' => 'default')); ?></div>
+					<div class="block_content"><?php echo $this->Form->input('Problem', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
@@ -59,6 +65,7 @@
 				</div>
 				<div class="clear"></div>
 			</section>
+		</div><!-- block_in -->
 		</div><!-- block -->
 	</div><!-- box -->
 </div><!-- grid_12 -->

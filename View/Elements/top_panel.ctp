@@ -4,7 +4,8 @@
 			<div class="panel_elements">
 				<ul class="panel_item">
 					<li><a href="#">Menu1<span class="number">2</span></a></li>
-					<li><a href="#">Menu2<span class="number">10</span></a></li>	
+					<li><a href="#">Menu2<span class="number">10</span></a></li>
+					<li class="right"><a href="#">Logout<span class="logout"></span></a></li>
 				</ul>
 			</div>
 		</div>

@@ -19,7 +19,7 @@
 $cakeDescription = __d('codebar_dev', 'Codebar on CakePHP');
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
 
 	<head>
 		<?php echo $this->Html->charset(); ?>
@@ -40,31 +40,30 @@ $cakeDescription = __d('codebar_dev', 'Codebar on CakePHP');
 		echo $this->Html->css('reset');
 		echo $this->Html->css('grid');
 		echo $this->Html->css('uniform.default');
-		echo $this->Html->css('chosen');
-		echo $this->Html->css('jquery.ui.all');
+		//echo $this->Html->css('chosen');
+		//echo $this->Html->css('jquery.ui.all');
 		echo $this->Html->css('style');
-		echo $this->Html->css('config');
+		echo $this->Html->css('dataTable');
 		?>
 		<!--[if gte IE 8]><?php echo $this->Html->css('ie8'); ?><![endif]-->
 		
 		<!--============ JQUERY =============-->
 		<?php
 		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
-		echo $this->Html->script('http://www.google.com/jsapi');
-		echo $this->Html->script('jquery.uniform');
-		echo $this->Html->script('chosen.jquery');
-		echo $this->Html->script('jquery.placeholder');
-		echo $this->Html->script('scriptbreaker-multiple-accordion-1');
-		echo $this->Html->script('head_scripts');
-		echo $this->Html->script('ui_calls');
-		echo $this->Html->script('scripts');
+		//echo $this->Html->script('http://www.google.com/jsapi');
+		//echo $this->Html->script('jquery.uniform');
+		//echo $this->Html->script('chosen.jquery.min');
+		//echo $this->Html->script('jquery.placeholder');
+		//echo $this->Html->script('jquery-ui-1.8.16.custom.min');
+		//echo $this->Html->script('scriptbreaker-multiple-accordion-1');
 		echo $this->Html->script('jquery.dataTables.min');
+		//echo $this->Html->script('ui_calls');
+		//echo $this->Html->script('scripts');
 		?>
 						
 		<!--=== ENABLE HTML5 TAGS FOR IE ===-->
 		<!--[if IE]><?php echo $this->Html->script('html5'); ?><![endif]-->
 	</head>
-
 	<body>
 		<section class="sidebar">
 			<?php echo $this->Html->link('', array('controller' => 'pages', 'action' => 'display', 'home'), array('class' => 'logo')); ?>

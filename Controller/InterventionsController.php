@@ -71,4 +71,29 @@ class InterventionsController extends AppController {
 		}
 		$this->set(compact('device', 'deviceType', 'problems', 'entryDate', 'resolvedDate', 'exitDate'));
 	}
+
+
+/**
+ * Components
+ *
+ * @var array
+ */
+    public $components = array(
+		'DataTable.DataTable' => array(
+			'columns' => array(
+				'id' => false,
+				'description' => 'Description',
+				'diagnostic' => 'Diagnostic',
+				'breakdown_found' => 'Breakdown found',
+				'Actions' => null
+			)
+		)
+	);
+
+/**
+ * Helpers
+ *
+ * @var array
+ */
+	public $helpers = array('DataTable.DataTable');
 }

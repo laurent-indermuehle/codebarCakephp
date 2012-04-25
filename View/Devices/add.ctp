@@ -47,6 +47,7 @@ $this->Js->get('#DeviceDeviceCategoryId')->event('change',
 	);
 
 //get device_type by brand
+//http://www.willis-owen.co.uk/2011/11/dynamic-select-box-with-cakephp-2-0/
 $this->Js->get('#DeviceBrandId')->event('change', 
 	$this->Js->request(array(
 		'controller'=>'device_types',

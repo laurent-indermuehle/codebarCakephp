@@ -4,3 +4,6 @@
 [submodule "Plugin/DebugKit"]
 	path = Plugin/DebugKit
 	url = https://github.com/cakephp/debug_kit.git
+[submodule "Plugin/DataTable"]
+	path = Plugin/DataTable
+	url = https://github.com/tigrang/cakephp-datatable.git
