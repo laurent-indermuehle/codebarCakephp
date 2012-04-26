@@ -7,6 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class InterventionsController extends AppController {
 
+public $helpers = array('DataTable.DataTable');
+
 /**
  * index method
  *
@@ -89,11 +91,4 @@ class InterventionsController extends AppController {
 			)
 		)
 	);
-
-/**
- * Helpers
- *
- * @var array
- */
-	public $helpers = array('DataTable.DataTable');
 }

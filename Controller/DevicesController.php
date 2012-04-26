@@ -7,6 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class DevicesController extends AppController {
 
+	public $helpers = array('DataTable.DataTable');
+
 /**
  * index method
  *
@@ -108,4 +110,24 @@ class DevicesController extends AppController {
 		$this->Session->setFlash(__('Device was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+
+/**
+ * Components
+ *
+ * @var array
+ */
+    public $components = array(
+		'DataTable.DataTable' => array(
+			'columns' => array(
+				'id' => false,
+				'date_end_of_warranty' => false,
+				'date_first_seen' => false,
+				'serial_number' => 'Serial number',
+				'device_type_id' => 'Device type',
+				'person_id' => 'Person',
+				'Actions' => null
+			)
+		)
+	);
 }

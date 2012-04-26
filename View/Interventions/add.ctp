@@ -3,6 +3,7 @@
 		<h2><?php echo __('Add Intervention'); ?><span class="1"></span><span class="r"></span></h2>
 		<div class="block">
 		<div class="block_in">
+
 		<?php echo $this->Form->create('Intervention', array(
 			'inputDefaults' => array(
 				'label' => false,
@@ -26,7 +27,7 @@
 			<section class="form_row">
 				<div class="grid_2"><label><?php echo __('Description'); ?></label></div>
 				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('description', array('class' => 'default input80pc', 'placeholder' => 'Type your text here')); ?></div>
+					<div class="block_content"><?php echo $this->Form->input('description', array('class' => 'default input800', 'placeholder' => 'Type your text here')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
