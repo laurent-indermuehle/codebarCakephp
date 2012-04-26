@@ -11,7 +11,7 @@ class InterventionTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.intervention', 'app.device', 'app.device_type', 'app.person', 'app.language', 'app.evices_problem', 'app.causes_devices_problem', 'app.document', 'app.email', 'app.loan', 'app.person_customer', 'app.person_technician', 'app.loan_article', 'app.article', 'app.location', 'app.operation', 'app.operation_type', 'app.operation_category', 'app.estimate', 'app.interventions', 'app.external_intervention_number', 'app.partner', 'app.brand', 'app.brands_partner', 'app.external_intervention_number_types', 'app.article_type', 'app.article_damage', 'app.person_technician_return', 'app.personal', 'app.personal_loan', 'app.technical', 'app.technical_loan', 'app.to_person', 'app.from_person', 'app.problem', 'app.problem_category', 'app.causes_device', 'app.interventions_problem');
+	public $fixtures = array('app.intervention');
 
 /**
  * setUp method
@@ -32,6 +32,12 @@ class InterventionTestCase extends CakeTestCase {
 		unset($this->Intervention);
 
 		parent::tearDown();
+	}
+
+	public function testgetDate() {
+		$result = $this->Intervention->getDate('1', '1');
+		$expected = "2005-10-21 11:57:25";
+		$this->assertEquals($expected, $result);
 	}
 
 }

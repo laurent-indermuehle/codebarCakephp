@@ -65,7 +65,7 @@ class InterventionsControllerTestCase extends CakeTestCase {
  * @return void
  */
 	public function testIndex() {
-
+		
 	}
 /**
  * testView method
@@ -83,14 +83,7 @@ class InterventionsControllerTestCase extends CakeTestCase {
 	public function testAdd() {
 
 	}
-/**
- * testEdit method
- *
- * @return void
- */
-	public function testEdit() {
 
-	}
 /**
  * testDelete method
  *
