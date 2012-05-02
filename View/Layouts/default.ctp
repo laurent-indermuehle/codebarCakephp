@@ -41,6 +41,7 @@ $cakeDescription = __d('codebar_dev', 'Codebar on CakePHP');
 		echo $this->Html->css('grid');
 		echo $this->Html->css('style');
 		echo $this->Html->css('dataTable');
+		echo $this->Html->css('smoothness/jquery-ui-1.8.20.custom')
 		?>
 		<!--[if gte IE 8]><?php echo $this->Html->css('ie8'); ?><![endif]-->
 		
@@ -48,6 +49,7 @@ $cakeDescription = __d('codebar_dev', 'Codebar on CakePHP');
 		<?php
 		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
 		echo $this->Html->script('jquery.dataTables.min');
+		echo $this->Html->script('jquery-ui-1.8.20.custom.min');
 		?>
 						
 		<!--=== ENABLE HTML5 TAGS FOR IE ===-->

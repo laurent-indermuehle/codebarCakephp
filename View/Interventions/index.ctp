@@ -20,7 +20,8 @@
 				    sAjaxSource: '<?php echo $this->Html->url(array('action' => 'index')); ?>',
 					bProcessing: true,
 					bServerSide: true,
-					bStateSave: true
+					bStateSave: true,
+					bJQueryUI: true
 				});
 			<?php echo $this->Html->scriptEnd(); ?>
 			</div><!-- block_in -->
