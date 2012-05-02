@@ -36,7 +36,7 @@ $cakeDescription = __d('codebar_dev', 'Codebar on CakePHP');
 		<!--========= STYLES =========-->
 		<?php
 		//echo $this->Html->css('cake.generic');
-		//echo $this->Html->css('screen');
+		echo $this->Html->css('screen');
 		echo $this->Html->css('reset');
 		echo $this->Html->css('grid');
 		echo $this->Html->css('style');

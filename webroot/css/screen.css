@@ -2,3 +2,8 @@
 	clear:none;
 	float:left;
 }
+
+/** Elements **/
+#url-rewriting-warning {
+	display:none;
+}

@@ -11,3 +11,4 @@ webroot/css/reset.css
 webroot/css/style.css
 webroot/images/*
 webroot/js/html5.js
+webroot/.htaccess
