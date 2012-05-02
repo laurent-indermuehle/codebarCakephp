@@ -3,7 +3,6 @@
 		<h2><?php echo __('Add Intervention'); ?><span class="1"></span><span class="r"></span></h2>
 		<div class="block">
 		<div class="block_in">
-
 		<?php echo $this->Form->create('Intervention', array(
 			'inputDefaults' => array(
 				'label' => false,

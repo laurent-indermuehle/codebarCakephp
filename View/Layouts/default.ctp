@@ -39,9 +39,6 @@ $cakeDescription = __d('codebar_dev', 'Codebar on CakePHP');
 		//echo $this->Html->css('screen');
 		echo $this->Html->css('reset');
 		echo $this->Html->css('grid');
-		echo $this->Html->css('uniform.default');
-		//echo $this->Html->css('chosen');
-		//echo $this->Html->css('jquery.ui.all');
 		echo $this->Html->css('style');
 		echo $this->Html->css('dataTable');
 		?>
@@ -50,15 +47,7 @@ $cakeDescription = __d('codebar_dev', 'Codebar on CakePHP');
 		<!--============ JQUERY =============-->
 		<?php
 		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
-		//echo $this->Html->script('http://www.google.com/jsapi');
-		//echo $this->Html->script('jquery.uniform');
-		//echo $this->Html->script('chosen.jquery.min');
-		//echo $this->Html->script('jquery.placeholder');
-		//echo $this->Html->script('jquery-ui-1.8.16.custom.min');
-		//echo $this->Html->script('scriptbreaker-multiple-accordion-1');
 		echo $this->Html->script('jquery.dataTables.min');
-		//echo $this->Html->script('ui_calls');
-		//echo $this->Html->script('scripts');
 		?>
 						
 		<!--=== ENABLE HTML5 TAGS FOR IE ===-->

@@ -70,8 +70,9 @@ public $helpers = array('DataTable.DataTable');
 			$entryDate = $this->Intervention->getDate($id, 1);
 			$resolvedDate = $this->Intervention->getDate($id, 8);
 			$exitDate = $this->Intervention->getDate($id, 9);
+			$operations = $this->Intervention->getOperationsByCategory('Intervention');
 		}
-		$this->set(compact('device', 'deviceType', 'problems', 'entryDate', 'resolvedDate', 'exitDate'));
+		$this->set(compact('device', 'deviceType', 'problems', 'entryDate', 'resolvedDate', 'exitDate', 'operations'));
 	}
 
 

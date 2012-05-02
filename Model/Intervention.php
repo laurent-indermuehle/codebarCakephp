@@ -77,6 +77,30 @@ class Intervention extends AppModel {
 		}
 	}
 
+	public function getOperationsByCategory($operation_category) {
+		/*$options['joins'] = array (
+			array('table' => 'operation_types',
+				'alias' => 'OperationTypes222',
+				'type' => 'LEFT',
+				'conditions' => array(
+					'Operation.operation_type_id = OperationType.id',
+				)
+			)
+		);*/
+
+/*		$options['conditions'] = array(
+			'OperationType.name' => $operation_category
+		);
+*/
+
+		$i = $this->Operation->find('all', array(
+			'conditions' => array(
+				'OperationType.name' => $operation_category
+			)
+		));
+		return $i;
+	} 
+
 /**
  * Validation rules
  *

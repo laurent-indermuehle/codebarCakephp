@@ -121,3 +121,4 @@ Cache::config('default', array('engine' => 'File'));
  * CakePlugin::loadAll(); // Loads all plugins at once
  */
  CakePlugin::load('DataTable');
+ CakePlugin::load('DebugKit');

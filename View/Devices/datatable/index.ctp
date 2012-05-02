@@ -7,6 +7,6 @@ foreach($dtResults as $result) {
         $result['Device']['serial_number'],
         $result['Device']['device_type_id'],
         $result['Device']['person_id'],
-        'edit',
+        $this->Html->link(__('Edit'), array('action' => 'edit', $result['Device']['id']))
     );
 }

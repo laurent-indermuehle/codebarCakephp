@@ -5,6 +5,6 @@ foreach($dtResults as $result) {
         $result['Intervention']['description'],
         $result['Intervention']['diagnostic'],
         $result['Intervention']['breakdown_found'],
-        'edit',
+        $this->Html->link(__('Edit'), array('action' => 'edit', $result['Intervention']['id']))
     );
 }
