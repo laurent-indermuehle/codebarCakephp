@@ -20,8 +20,8 @@
 				    sAjaxSource: '<?php echo $this->Html->url(array('action' => 'index')); ?>',
 					bProcessing: true,
 					bServerSide: true,
-					bStateSave: true,
-					bJQueryUI: true
+					bJQueryUI: true,
+					sPaginationType: "full_numbers"
 				});
 			<?php echo $this->Html->scriptEnd(); ?>
 			</div><!-- block_in -->
