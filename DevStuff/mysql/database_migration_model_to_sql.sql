@@ -2,7 +2,7 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-CREATE SCHEMA IF NOT EXISTS `codebarcakephp` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+CREATE SCHEMA IF NOT EXISTS `codebarcakephp` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `codebarcakephp` ;
 
 -- -----------------------------------------------------
@@ -144,7 +144,10 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`interventions` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `device_id` INT NOT NULL ,
+  `entry_date` DATETIME NOT NULL ,
   `description` TEXT NOT NULL ,
+  `resolved_date` DATETIME NULL ,
+  `exit_date` DATETIME NULL ,
   `diagnostic` TEXT NULL ,
   `comment` TEXT NULL ,
   `breakdown_found` TEXT NULL ,

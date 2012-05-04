@@ -1,5 +1,5 @@
 DROP SCHEMA IF EXISTS `codebarcakephp`;
-CREATE SCHEMA `codebarcakephp` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+CREATE SCHEMA `codebarcakephp` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `codebarcakephp` ;
 
 ### codebar_tbl_person TO people
@@ -22,6 +22,7 @@ ALTER TABLE `people` AUTO_INCREMENT = 2
 CREATE UNIQUE INDEX `sciper_UNIQUE` ON `people` (`sciper` ASC);
 UPDATE `people` SET `is_banned` = from_unixtime(`is_banned_unix`);
 ALTER TABLE `people` DROP COLUMN `is_banned_unix`;
+ALTER TABLE `people` ENGINE = InnoDB;
   
 ### codebar_tbl_technicien to people
 INSERT INTO `people` 
@@ -140,7 +141,8 @@ ALTER TABLE `codebarcakephp`.`devices`
   CHANGE COLUMN `device_id` `device_id` INT NULL DEFAULT '0'  AFTER `serial_number`
   ,CHANGE COLUMN `device_type_id` `device_type_id` INT NOT NULL DEFAULT '0'  
   ,CHANGE COLUMN `person_id` `person_id` INT NOT NULL DEFAULT '0'  
-  ,CHANGE COLUMN `location_id` `location_id` INT NULL DEFAULT NULL  ;
+  ,CHANGE COLUMN `location_id` `location_id` INT NULL DEFAULT NULL;
+ALTER TABLE `devices` ENGINE = InnoDB;
   
 ### codebar_tbl_type_machine TO device_types
 CREATE TABLE `device_types` LIKE `codebar`.`codebar_tbl_type_machine`;
@@ -150,6 +152,7 @@ ALTER TABLE `device_types` CHANGE COLUMN `TypeMachine_ID` `id` INT(6) NOT NULL A
   ,CHANGE COLUMN `BoolActif` `is_active` TINYINT(1) NOT NULL DEFAULT '1'
   ,ADD COLUMN `brand_id` INT NOT NULL
   ,ADD COLUMN `device_category_id` INT NOT NULL;
+ALTER TABLE `device_types` ENGINE = InnoDB;
   
 ### codebar_tbl_emprunt TO loans
 CREATE TABLE `loans` LIKE `codebar`.`codebar_tbl_emprunt`;
@@ -169,6 +172,7 @@ UPDATE `loans` SET `person_customer_id` = (SELECT `id` AS `person_customer_id`
 UPDATE `loans` SET `person_technician_id` = (SELECT `id` AS `person_technician_id`
   FROM `people`
   WHERE `loans`.`person_technician_id` = `people`.`sciper`);
+ALTER TABLE `loans` ENGINE = InnoDB;
   
 ### codebar_tbl_emprunt TO personal_loans
 CREATE TABLE `personal_loans` LIKE `codebar`.`codebar_tbl_emprunt`;
@@ -187,6 +191,7 @@ ALTER TABLE `personal_loans` AUTO_INCREMENT = 1
   ,ADD PRIMARY KEY (`id`);
 UPDATE `personal_loans` SET `planned_return_date` = from_unixtime(`planned_return_date_unix`);
 ALTER TABLE `personal_loans` DROP COLUMN `planned_return_date_unix`;
+ALTER TABLE `personal_loans` ENGINE = InnoDB;
   
 ### codebar_tbl_article_emprunte To device_loans
 CREATE TABLE `device_loans` AS 
@@ -207,6 +212,7 @@ ALTER TABLE `device_loans` DROP COLUMN `actual_return_date_unix`;
 UPDATE `device_loans` SET `person_technician_return_id` = (SELECT `id` AS `person_technician_return_id`
   FROM `people`
   WHERE `device_loans`.`person_technician_return_id` = `people`.`sciper`);
+ALTER TABLE `device_loans` ENGINE = InnoDB;
   
 ### codebar_tbl_email TO emails
 CREATE TABLE `emails` LIKE `codebar`.`codebar_tbl_email`;
@@ -225,6 +231,8 @@ ALTER TABLE `emails` CHANGE COLUMN `Email_ID` `id` INT NOT NULL AUTO_INCREMENT
   ,ADD COLUMN `to_person_id` INT NOT NULL AFTER `to_person_email`;
 UPDATE `emails` SET `date` = from_unixtime(`date_unix`);
 ALTER TABLE `emails` DROP COLUMN `date_unix`;
+ALTER TABLE `emails` ENGINE = InnoDB;
+ALTER TABLE `codebarcakephp`.`emails` CHARACTER SET = utf8 , COLLATE = utf8_general_ci ;
   
 ### codebar_tbl_intervention TO interventions
 CREATE TABLE `interventions` AS 
@@ -248,6 +256,7 @@ ALTER TABLE `codebarcakephp`.`interventions`
   ,CHANGE COLUMN `device_id` `device_id` INT NOT NULL
   ,ADD INDEX `device_id` USING BTREE (`device_id` ASC)
   ,ADD PRIMARY KEY (`id`) ;
+ALTER TABLE `interventions` ENGINE = InnoDB;
   
 ### codebar_tbl_intervention_etat TO operations
 CREATE TABLE `operations` LIKE `codebar`.`codebar_tbl_intervention_etat`;
@@ -265,3 +274,4 @@ ALTER TABLE `operations` DROP COLUMN `date_unix`;
 UPDATE `operations` SET `person_technician_id` = (SELECT `id` AS `person_technician_id`
   FROM `people`
   WHERE `operations`.`person_technician_id` = `people`.`sciper`);
+ALTER TABLE `operations` ENGINE = InnoDB;
