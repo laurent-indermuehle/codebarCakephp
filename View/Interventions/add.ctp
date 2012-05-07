@@ -19,7 +19,7 @@
 			<section class="form_row">
 				<div class="grid_2"><label><?php echo __('Entry Date'); ?></label></div>
 				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('entry_date', array('class' => 'default')); ?></div>
+					<div class="block_content"><?php echo $this->Form->input('Operation.0.date', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
@@ -27,27 +27,6 @@
 				<div class="grid_2"><label><?php echo __('Description'); ?></label></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('description', array('class' => 'default input800', 'placeholder' => 'Type your text here')); ?></div>
-				</div>
-				<div class="clear"></div>
-			</section>
-			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Diagnostic'); ?></label></div>
-				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('diagnostic', array('class' => 'default')); ?></div>
-				</div>
-				<div class="clear"></div>
-			</section>
-			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Comment'); ?></label></div>
-				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('comment', array('class' => 'default')); ?></div>
-				</div>
-				<div class="clear"></div>
-			</section>
-			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('breakdown_found'); ?></label></div>
-				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('breakdown_found', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
@@ -61,7 +40,7 @@
 			<section class="form_row">
 				<div class="grid_2"></div>
 				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->end(array('label' => __('Submit'), 'class' => 'button blue medium')); ?></div>
+					<div class="block_content"><?php echo $this->Form->end(array('label' => __('Add'), 'class' => 'button blue medium')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
