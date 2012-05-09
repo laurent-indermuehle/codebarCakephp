@@ -58,21 +58,9 @@ public $helpers = array('DataTable.DataTable');
 				$this->Session->setFlash(__('The intervention could not be saved. Please, try again.'));
 			}
 		} else {
+			$this->Intervention->recursive = 2;
 			$this->request->data = $this->Intervention->read(null, $id);
-			// retrive the device_type name.
-			$this->loadModel('DeviceType');
-			$deviceType = $this->DeviceType->find('first', array(
-				'fields' => array('name'),
-				'conditions' => array('DeviceType.id' => $this->Intervention->Device->field('device_type_id')),
-				'recursive' => -1));
-			$device = $this->Intervention->field('device_id');
-			$problems = $this->Intervention->Problem->find('list');
-			$entryDate = $this->Intervention->getDate($id, 1);
-			$resolvedDate = $this->Intervention->getDate($id, 8);
-			$exitDate = $this->Intervention->getDate($id, 9);
-			$operations = $this->Intervention->getOperationsByCategory('Intervention');
 		}
-		$this->set(compact('device', 'deviceType', 'problems', 'entryDate', 'resolvedDate', 'exitDate', 'operations'));
 	}
 
 
