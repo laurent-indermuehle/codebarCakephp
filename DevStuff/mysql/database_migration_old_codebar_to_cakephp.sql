@@ -195,6 +195,22 @@ ALTER TABLE `personal_loans` AUTO_INCREMENT = 1
 UPDATE `personal_loans` SET `planned_return_date` = from_unixtime(`planned_return_date_unix`);
 ALTER TABLE `personal_loans` DROP COLUMN `planned_return_date_unix`;
 ALTER TABLE `personal_loans` ENGINE = InnoDB;
+
+### codebar_tbl_emprunt TO technical_loans
+CREATE TABLE `technical_loans` LIKE `codebar`.`codebar_tbl_emprunt`;
+INSERT INTO `technical_loans` SELECT * FROM `codebar`.`codebar_tbl_emprunt` WHERE `codebar`.`codebar_tbl_emprunt`.`Emprunt_DateRetour` = '0';
+ALTER TABLE `technical_loans` AUTO_INCREMENT = 1
+  ,ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
+  ,ADD COLUMN `intervention_id` INT NOT NULL DEFAULT '0'
+  ,CHANGE COLUMN `Emprunt_Id` `loan_id` INT NOT NULL
+  ,DROP COLUMN `Emprunt_DateRetour`
+  ,DROP COLUMN `Emprunt_Raison`
+  ,DROP COLUMN `Emprunt_Date`
+  ,DROP COLUMN `Emprunt_IdxSciper`
+  ,DROP COLUMN `Emprunt_IdxTechnicien`
+  ,DROP PRIMARY KEY 
+  ,ADD PRIMARY KEY (`id`);
+ALTER TABLE `technical_loans` ENGINE = InnoDB;
   
 ### codebar_tbl_article_emprunte To device_loans
 CREATE TABLE `device_loans` AS 
