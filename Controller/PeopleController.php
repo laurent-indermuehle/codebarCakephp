@@ -7,6 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class PeopleController extends AppController {
 
+	public $helpers = array('DataTable.DataTable');
 
 /**
  * index method
@@ -16,21 +17,6 @@ class PeopleController extends AppController {
 	public function index() {
 		$this->Person->recursive = 0;
 		$this->set('people', $this->paginate());
-	}
-
-/**
- * view method
- *
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		$this->Person->id = $id;
-		if (!$this->Person->exists()) {
-			throw new NotFoundException(__('Invalid person'));
-		}
-		$this->Person->recursive = 2;
-		$this->set('person', $this->Person->read(null, $id));
 	}
 
 /**
@@ -49,7 +35,8 @@ class PeopleController extends AppController {
 			}
 		}
 		$languages = $this->Person->Language->find('list');
-		$this->set(compact('languages'));
+		$partners = $this->Person->Partner->find('list');
+		$this->set(compact('languages', 'partners'));
 	}
 
 /**
@@ -71,9 +58,13 @@ class PeopleController extends AppController {
 				$this->Session->setFlash(__('The person could not be saved. Please, try again.'));
 			}
 		} else {
+			//$this->Person->recursive = 2;
 			$this->request->data = $this->Person->read(null, $id);
 		}
-		$this->set('languages', $this->Person->Language->find('list'));
+		$languages =  $this->Person->Language->find('list');
+		$devices = $this->Person->getPersonDevices();
+		$loans = $this->Person->getPersonLoans();
+		$this->set(compact('languages', 'devices', 'loans'));
 	}
 
 /**
@@ -97,4 +88,27 @@ class PeopleController extends AppController {
 		$this->Session->setFlash(__('Person was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+/**
+ * Components
+ *
+ * @var array
+ */
+    public $components = array(
+		'DataTable.DataTable' => array(
+			'columns' => array(
+				'id' => false,
+				'sciper' => 'Sciper',
+				'first_name' => 'First name',
+				'last_name' => 'Last name',
+				'email' => 'Email',
+				'phone_number' => 'Phone number',
+				'is_technician' => 'Is technician',
+				'is_banned' => 'Is banned',
+				'Language.name' => 'Language',
+				'partner_id' => 'Partner',
+				'Actions' => null
+			)
+		)
+	);
 }

@@ -10,6 +10,7 @@ ALTER TABLE `people` AUTO_INCREMENT = 2
   ,ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,ADD COLUMN `is_technician` TINYINT(1) NOT NULL DEFAULT 0 AFTER `phone_number`
   ,ADD COLUMN `language_id` INT NOT NULL AFTER `is_banned_unix`
+  ,ADD COLUMN `partner_id` INT NULL AFTER `is_banned_unix`
   ,CHANGE COLUMN `Pers_Sciper` `sciper` INT(8) NOT NULL
   ,CHANGE COLUMN `Pers_Prenom` `first_name` VARCHAR(20) NOT NULL DEFAULT ''
   ,CHANGE COLUMN `Pers_Nom` `last_name` VARCHAR(30) NOT NULL DEFAULT ''
@@ -34,7 +35,8 @@ INSERT INTO `people`
         `phone_number`, 
         `is_technician`, 
         `is_banned`, 
-        `language_id`
+        `language_id`,
+        `partner_id`
     ) 
     SELECT 
         `Tech_Id`       AS `sciper`,
@@ -44,7 +46,8 @@ INSERT INTO `people`
         `Tech_Tel`      AS `phone_number`, 
         '1', 
         NULL, 
-        '0'
+        '0',
+        NULL
     FROM `codebar`.`codebar_tbl_technicien`
     LEFT OUTER JOIN `people`
     ON `codebar`.`codebar_tbl_technicien`.`Tech_Id` = `people`.`sciper`

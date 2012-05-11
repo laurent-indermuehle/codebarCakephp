@@ -35,7 +35,36 @@ class Person extends AppModel {
  */
 	public $displayField = 'full_name_with_sciper'; // Virtual field
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
+	public function getPersonDevices(){
+		$devices = $this->Device->find('all', array(
+			'conditions' => array(
+				'Device.person_id' => $this->id
+			),
+			'contain' => array(
+				'DeviceType' => array('Brand'),
+				'Intervention'
+			)
+		));
+		return $devices;
+	}
+
+	public function getPersonLoans(){
+		$loans = $this->LoanCustomer->find('all', array(
+			'conditions' => array(
+				'LoanCustomer.person_customer_id' => $this->id
+			),
+			'contain' => array(
+				'PersonalLoan',
+				'TechnicalLoan')
+			)
+		);
+		return $loans;
+	}
+
+
+	public function getEmails(){
+
+	}
 
 /**
  * belongsTo associations
@@ -46,6 +75,13 @@ class Person extends AppModel {
 		'Language' => array(
 			'className' => 'Language',
 			'foreignKey' => 'language_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Partner' => array(
+			'className' => 'Partner',
+			'foreignKey' => 'partner_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

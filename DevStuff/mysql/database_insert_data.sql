@@ -166,3 +166,9 @@ INSERT INTO `codebarcakephp`.`operation_types` (`id`, `name`, `operation_categor
 INSERT INTO `codebarcakephp`.`operation_categories` (`id`, `name`) VALUES (1, 'Intervention');
 INSERT INTO `codebarcakephp`.`operation_categories` (`id`, `name`) VALUES (2, 'Devis');
 INSERT INTO `codebarcakephp`.`operation_categories` (`id`, `name`) VALUES (3, 'Intervention rapide (guichet)');
+
+INSERT INTO `codebarcakephp`.`partners` (`name`) VALUES ('ESAG');
+INSERT INTO `codebarcakephp`.`partners` (`name`) VALUES ('Darest');
+INSERT INTO `codebarcakephp`.`partners` (`name`) VALUES ('L\'age du soft');
+INSERT INTO `codebarcakephp`.`partners` (`name`) VALUES ('CRI');
+INSERT INTO `codebarcakephp`.`partners` (`name`) VALUES ('Doors');
