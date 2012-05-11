@@ -60,7 +60,7 @@ INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `d
 INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('DVD/CD externe', 1, 1, 6);
 INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('télécommande', 1, 3, 10);
 INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('floppy usb ext.', 1, 15, 13);
-INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('miniDP vers DVI', 1, 2, 16);
+INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('miniDP vers DVI', 1, 3, 16);
 INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('VGA vers DVI', 1, 3, 16);
 INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('miniVGA vers VGA', 1, 3, 16);
 INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('DP vers DVI', 1, 1, 16);
