@@ -109,57 +109,44 @@
 </div>
 <?php endif; ?>
 
-<?php if (!empty($this->request->data['LoanCustomer'])):?>
+<?php if (!empty($loans)):?>
 <div class="grid_12">
 	<div class="box">
-	<h2><?php echo __('Related Emails for loans');?><span class="1"></span><span class="r"></span></h2>
+	<h2><?php echo __('Related Loans');?><span class="1"></span><span class="r"></span></h2>
 	<div class="block"><div class="block_in">
 		<table>
 			<tr>
-				<th><?php echo __('Title'); ?></th>
-				<th><?php echo __('Message'); ?></th>
 				<th><?php echo __('Date'); ?></th>
+				<th><?php echo __('Devices'); ?></th>
+				<th><?php echo __('Date de retour convenu'); ?></th>
+				<th><?php echo __('Date de retour réel'); ?>
+				<th><?php echo __('Retard'); ?>
 				<th class="actions"><?php echo __('Actions');?></th>
 			</tr>
-			<?php foreach ($this->request->data['LoanCustomer'] as $loan): ?>
-			<?php if (!empty($loan['Email'])): ?>
-				<?php foreach ($loan['Email'] as $email): ?>
-				<tr>
-					<td><?php echo $email['title']; ?></td>
-					<td><?php echo $email['message']; ?></td>
-					<td><?php echo $email['date']; ?></td>
-					<td class="actions">
-						<?php echo $this->Html->link(__('Edit'), array('controller' => 'emails', 'action' => 'edit', $email['id'])); ?>
-						<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'emails', 'action' => 'delete', $email['id']), null, __('Are you sure you want to delete # %s?', $email['id'])); ?>
-					</td>
-				</tr>
+			<?php foreach ($loans as $loan): ?>
+			<tr>
+				<td><?php echo $loan['LoanCustomer']['borrow_date']; ?></td>
+				<td>
+				<?php $i = 1; ?>
+				<?php foreach ($loan['DeviceLoan'] as $device): ?>
+					<?php if(!empty($device['Device']['DeviceType'])) echo $device['Device']['DeviceType']['Brand']['name'].' '.$device['Device']['DeviceType']['name']; ?>
+					<?php if($i < count($loan['DeviceLoan'])) echo ', '; ?>
+					<?php $i++; ?>
 				<?php endforeach; ?>
-			<?php endif; ?>
-			<?php endforeach; ?>
-		</table>
-	</div></div>
-	</div>
-</div>
-<?php endif; ?>
-
-<?php if (!empty($this->request->data['LoanCustomer'])):?>
-<div class="grid_12">
-	<div class="box">
-	<h2><?php echo __('Related loans');?><span class="1"></span><span class="r"></span></h2>
-	<div class="block"><div class="block_in">
-		<table>
-			<tr>
-				<th><?php echo __('Date'); ?></th>
-				<th><?php echo __('Device count'); ?></th>
-				<th class="actions"><?php echo __('Actions');?></th>
-			</tr>
-			<?php foreach ($this->request->data['LoanCustomer'] as $loan): ?>
-			<tr>
-				<td><?php echo $loan['borrow_date']; ?></td>
-				<td><?php echo count($loan['DeviceLoan']); ?></td>
+				</td>
+				<td>
+					<?php if(!empty($loan['PersonalLoan'])) {
+						echo $loan['PersonalLoan'][0]['planned_return_date'];
+					}
+					else {
+						echo $this->Html->link('Intervention n°'.$loan['TechnicalLoan'][0]['intervention_id'], array('controller' => 'interventions', 'action' => 'edit', $loan['TechnicalLoan'][0]['intervention_id']));
+					} ?>
+				</td>
+				<td><?php echo $loan['ActualReturnDate']; ?></td>
+				<td><?php echo $loan['DeltaDate']; ?></td>
 				<td class="actions">
-					<?php echo $this->Html->link(__('Edit'), array('controller' => 'loans', 'action' => 'edit', $loan['id'])); ?>
-					<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'loans', 'action' => 'delete', $loan['id']), null, __('Are you sure you want to delete # %s?', $loan['id'])); ?>
+					<?php echo $this->Html->link(__('Edit'), array('controller' => 'loans', 'action' => 'edit', $loan['LoanCustomer']['person_customer_id'])); ?>
+					<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'loans', 'action' => 'delete', $loan['LoanCustomer']['person_customer_id']), null, __('Are you sure you want to delete # %s?', $loan['LoanCustomer']['person_customer_id'])); ?>
 				</td>
 			</tr>
 			<?php endforeach; ?>

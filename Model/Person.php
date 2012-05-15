@@ -48,6 +48,11 @@ class Person extends AppModel {
 		return $devices;
 	}
 
+/**
+ * function getPersonLoans
+ *
+ * Retrieve all loans made by a person and calcultate dates related to each one
+ */
 	public function getPersonLoans(){
 		$loans = $this->LoanCustomer->find('all', array(
 			'conditions' => array(
@@ -55,16 +60,80 @@ class Person extends AppModel {
 			),
 			'contain' => array(
 				'PersonalLoan',
-				'TechnicalLoan')
+				'TechnicalLoan',
+				'DeviceLoan' => array(
+					'Device.id' => array('DeviceType.name' => array('Brand.name'))
+				)
 			)
-		);
+		));
+
+		// We add a new variable in the array using &(reference)
+		foreach($loans as &$loan) {
+			// Retrieve the date when the last device was returned
+			$actual_return_date = $this->getLastReturnDateForALoan($loan);
+			// 1 means there was an error. In the past our DB wasn't recorded the return date so we test if it's null
+			if ($actual_return_date != 1 AND !is_null($actual_return_date)) {
+				// New variable inserted in the array
+				$loan['ActualReturnDate'] = $actual_return_date;
+				// We calculate the difference between the planned return date and the actual return date. But only for Personal_loans
+				if(!empty($loan['PersonalLoan'])) {
+					
+					$d1 = new DateTime($actual_return_date);
+					$d2 = new DateTime( $loan['PersonalLoan'][0]['planned_return_date']);
+					$DeltaDate = $d1->diff($d2);
+					if($DeltaDate->invert) {
+						// New variable inserted in the array
+						$loan['DeltaDate'] = $DeltaDate->format('%a jours et %h Heures');
+					}
+					else {
+						$loan['DeltaDate'] = 'Rendu à la date convenue';
+					}
+					
+				}
+				elseif(!empty($loan['TechnicalLoan'])) {
+					$loan['DeltaDate'] = NULL;
+				}
+			}
+			else {
+				$loan['ActualReturnDate'] = NULL;
+				$loan['DeltaDate'] = NULL;
+			}
+		}
 		return $loans;
 	}
 
-
-	public function getEmails(){
-
+/**
+ * function getLastReturnDateForALoan
+ *
+ * Each device can be return separately and in order to calculate when a loan is really closed we have
+ * to exctract the biggest date.
+ * 
+ *  * @var array from model Loan
+ */
+	private function getLastReturnDateForALoan($loan) {	
+		if(count($loan['DeviceLoan']) == 1){
+			if(!is_null($loan['DeviceLoan'][0]['actual_return_date'])) {
+				return $loan['DeviceLoan'][0]['actual_return_date'];
+			}
+			else {
+				return '1';
+			}
+		}
+		elseif(count($loan['DeviceLoan']) > 1) {
+			$biggest_date = NULL;
+			foreach($loan['DeviceLoan'] as $DeviceLoan) {
+				if ($DeviceLoan['actual_return_date'] > $biggest_date) {
+					$biggest_date = $DeviceLoan['actual_return_date'];
+				}
+			}
+			return $biggest_date;
+		}
+		else {
+			return '1';
+		}
 	}
+
+
 
 /**
  * belongsTo associations
