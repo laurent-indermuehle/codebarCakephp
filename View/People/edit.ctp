@@ -10,56 +10,56 @@
 			));?>
 			<?php echo $this->Form->input('id'); ?>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Sciper'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Person.sciper'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('sciper', array('class' => 'default input800')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('First name'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Person.first_name'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('first_name', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Last name'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Person.last_name'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('last_name', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Email'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Person.email'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('email', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Phone number'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Person.phone_number'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('phone_number', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Is Technician'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Person.is_technician'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('is_technician', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Is banned'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Person.is_banned'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('is_banned', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Language'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Person.language_id'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('language_id', array('class' => 'default')); ?></div>
 				</div>

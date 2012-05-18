@@ -10,30 +10,30 @@
 			)
 		)); ?>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Device'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Intervention.device_id'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('device_id', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Entry Date'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Intervention.entry_date'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('Operation.0.date', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Description'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Intervention.description'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('description', array('class' => 'default input800', 'placeholder' => 'Type your text here')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Problem'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Intervention.problem'); ?></div>
 				<div class="grid_10">
-					<div class="block_content"><?php echo $this->Form->input('Problem', array('class' => 'default')); ?></div>
+					<div class="block_content"><?php echo $this->Form->input('problem', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>

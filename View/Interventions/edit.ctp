@@ -10,35 +10,35 @@
 			));?>
 			<?php echo $this->Form->input('id'); ?>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Device'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Intervention.device_id'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Html->link($this->request->data['Device']['DeviceType']['name'], array('controller' => 'devices', 'action' => 'edit', $this->request->data['Device']['id'])); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Description'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Intervention.description'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('description', array('class' => 'default input800')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Diagnostic'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Intervention.diagnostic'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('diagnostic', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Comment'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Intervention.comment'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('comment', array('class' => 'default')); ?></div>
 				</div>
 				<div class="clear"></div>
 			</section>
 			<section class="form_row">
-				<div class="grid_2"><label><?php echo __('Breakdown Found'); ?></label></div>
+				<div class="grid_2"><?php echo $this->Form->Label('Intervention.breakdown_found'); ?></div>
 				<div class="grid_10">
 					<div class="block_content"><?php echo $this->Form->input('breakdown_found', array('class' => 'default')); ?></div>
 				</div>
