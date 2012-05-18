@@ -13,6 +13,8 @@ App::uses('AppModel', 'Model');
  */
 class Person extends AppModel {
 
+	public $actsAs = array('IsLoanLate');
+
 	// Have a more human displayField than the ID (in form only !)
 	// Thanks: http://book.cakephp.org/2.0/en/models/virtual-fields.html#virtual-fields-and-model-aliases
 	public function __construct($id = false, $table = null, $ds = null) {
@@ -35,6 +37,11 @@ class Person extends AppModel {
  */
 	public $displayField = 'full_name_with_sciper'; // Virtual field
 
+/**
+ * function getPersonDevices
+ *
+ * Retrieve all devices who belong to a person
+ */
 	public function getPersonDevices(){
 		$devices = $this->Device->find('all', array(
 			'conditions' => array(
@@ -71,24 +78,14 @@ class Person extends AppModel {
 		foreach($loans as &$loan) {
 			// Retrieve the date when the last device was returned
 			$actual_return_date = $this->getLastReturnDateForALoan($loan);
-			// 1 means there was an error. In the past our DB wasn't recorded the return date so we test if it's null
+			// 1 means there was an error. In the past our DB wasn't recording the return date so we test if it's not null
 			if ($actual_return_date != 1 AND !is_null($actual_return_date)) {
 				// New variable inserted in the array
 				$loan['ActualReturnDate'] = $actual_return_date;
 				// We calculate the difference between the planned return date and the actual return date. But only for Personal_loans
 				if(!empty($loan['PersonalLoan'])) {
-					
-					$d1 = new DateTime($actual_return_date);
-					$d2 = new DateTime( $loan['PersonalLoan'][0]['planned_return_date']);
-					$DeltaDate = $d1->diff($d2);
-					if($DeltaDate->invert) {
-						// New variable inserted in the array
-						$loan['DeltaDate'] = $DeltaDate->format('%a jours et %h Heures');
-					}
-					else {
-						$loan['DeltaDate'] = 'Rendu à la date convenue';
-					}
-					
+					// use Model/Behavior/IsLoanLateBehavior.php
+					$loan['DeltaDate'] = $this->IsLoanLate($loan['PersonalLoan'][0]['planned_return_date'], $actual_return_date);
 				}
 				elseif(!empty($loan['TechnicalLoan'])) {
 					$loan['DeltaDate'] = NULL;

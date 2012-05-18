@@ -79,7 +79,7 @@
 <?php if (!empty($devices)):?>
 <div class="grid_12">
 	<div class="box">
-	<h2><?php echo __('Related Device');?><span class="1"></span><span class="r"></span></h2>
+	<h2><?php echo __('Related Devices (').count($devices).')';?><span class="1"></span><span class="r"></span></h2>
 	<div class="block"><div class="block_in">
 		<table>
 			<tr>
@@ -112,7 +112,7 @@
 <?php if (!empty($loans)):?>
 <div class="grid_12">
 	<div class="box">
-	<h2><?php echo __('Related Loans');?><span class="1"></span><span class="r"></span></h2>
+	<h2><?php echo __('Related Loans (').count($loans).')';?><span class="1"></span><span class="r"></span></h2>
 	<div class="block"><div class="block_in">
 		<table>
 			<tr>
