@@ -124,8 +124,8 @@ class DevicesController extends AppController {
 				'date_end_of_warranty' => false,
 				'date_first_seen' => false,
 				'serial_number' => 'Serial number',
-				'device_type_id' => 'Device type',
-				'person_id' => 'Person',
+				'DeviceType.name' => false,
+				'Person.last_name' => 'Person',
 				'Actions' => null
 			)
 		)
