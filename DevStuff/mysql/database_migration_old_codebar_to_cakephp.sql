@@ -107,6 +107,8 @@ DELETE FROM `devices` WHERE `Mach_ServiceTag` = 'CZC047C700';
 DELETE FROM `devices` WHERE `Mach_ServiceTag` = 'CND0480X88';
 DELETE FROM `devices` WHERE `Mach_ServiceTag` = 'C02FJ10CDH2M';
 DELETE FROM `devices` WHERE `Mach_ServiceTag` = 'C02FJ10CDH2M';
+DELETE FROM `devices` WHERE `Mach_ServiceTag` = 'CZC047C701';
+DELETE FROM `devices` WHERE `Mach_ServiceTag` = 'C02FJ10BDH2M';
 ALTER TABLE `devices` ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,ADD COLUMN `date_first_seen` DATETIME AFTER `id`
   ,ADD COLUMN `date_end_of_warranty` DATE AFTER `id`
