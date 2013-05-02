@@ -214,13 +214,13 @@ ALTER TABLE `technical_loans` AUTO_INCREMENT = 1
   ,ADD PRIMARY KEY (`id`);
 ALTER TABLE `technical_loans` ENGINE = InnoDB;
   
-### codebar_tbl_article_emprunte To device_loans
-CREATE TABLE `device_loans` AS 
+### codebar_tbl_article_emprunte To devices_loans
+CREATE TABLE `devices_loans` AS 
   (SELECT `codebarcakephp`.`devices`.`id` AS `device_id`, `codebar`.`codebar_tbl_article_emprunte`.* 
    FROM  `codebar`.`codebar_tbl_article_emprunte` 
    JOIN `codebarcakephp`.`devices` 
    ON `codebarcakephp`.`devices`.`serial_number` = `codebar`.`codebar_tbl_article_emprunte`.`ArtEmp_Idx_Article`);
-ALTER TABLE `device_loans` CHANGE COLUMN  `ArtEmp_Idx_Emprunt` `loan_id` INT NOT NULL
+ALTER TABLE `devices_loans` CHANGE COLUMN  `ArtEmp_Idx_Emprunt` `loan_id` INT NOT NULL
   ,CHANGE COLUMN `ArtEmp_VisaTechnicien` `person_technician_return_id` INT NULL DEFAULT NULL
   ,CHANGE COLUMN `ArtEmp_DateRetourReel` `actual_return_date_unix` INT NULL DEFAULT NULL
   ,DROP COLUMN `ArtEmp_Idx_Article`
@@ -228,12 +228,12 @@ ALTER TABLE `device_loans` CHANGE COLUMN  `ArtEmp_Idx_Emprunt` `loan_id` INT NOT
   ,ADD COLUMN `actual_return_date` DATETIME NULL DEFAULT NULL
   ,ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,ADD PRIMARY KEY (`id`);
-UPDATE `device_loans` SET `actual_return_date` = from_unixtime(`actual_return_date_unix`) WHERE `actual_return_date_unix` > '1';
-ALTER TABLE `device_loans` DROP COLUMN `actual_return_date_unix`;
-UPDATE `device_loans` SET `person_technician_return_id` = (SELECT `id` AS `person_technician_return_id`
+UPDATE `devices_loans` SET `actual_return_date` = from_unixtime(`actual_return_date_unix`) WHERE `actual_return_date_unix` > '1';
+ALTER TABLE `devices_loans` DROP COLUMN `actual_return_date_unix`;
+UPDATE `devices_loans` SET `person_technician_return_id` = (SELECT `id` AS `person_technician_return_id`
   FROM `people`
-  WHERE `device_loans`.`person_technician_return_id` = `people`.`sciper`);
-ALTER TABLE `device_loans` ENGINE = InnoDB;
+  WHERE `devices_loans`.`person_technician_return_id` = `people`.`sciper`);
+ALTER TABLE `devices_loans` ENGINE = InnoDB;
   
 ### codebar_tbl_email TO emails
 CREATE TABLE `emails` LIKE `codebar`.`codebar_tbl_email`;
@@ -284,7 +284,7 @@ CREATE TABLE `operations` LIKE `codebar`.`codebar_tbl_intervention_etat`;
 INSERT INTO `operations` SELECT * FROM `codebar`.`codebar_tbl_intervention_etat`;
 ALTER TABLE `operations` CHANGE COLUMN `InterEtat_Id` `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,CHANGE COLUMN `InterEtat_IdxIntervention` `intervention_id` INT NULL
-  ,CHANGE COLUMN `InterEtat_IdxEtat` `operation_type_id` INT NOT NULL
+  ,CHANGE COLUMN `InterEtat_IdxEtat` `action_id` INT NOT NULL
   ,CHANGE COLUMN `InterEtat_IdxTechnicien` `person_technician_id` INT NOT NULL
   ,CHANGE COLUMN  `InterEtat_Timestamp` `date_unix` INT NOT NULL
   ,ADD COLUMN `date` DATETIME NOT NULL

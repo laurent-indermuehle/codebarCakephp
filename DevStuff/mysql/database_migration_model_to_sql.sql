@@ -229,7 +229,7 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`operations` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `location_id` INT NOT NULL ,
-  `actions_id` INT NOT NULL ,
+  `action_id` INT NOT NULL ,
   `person_technician_id` INT NOT NULL ,
   `intervention_id` INT NULL ,
   `estimate_id` INT NULL ,
