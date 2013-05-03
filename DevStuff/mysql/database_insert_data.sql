@@ -163,15 +163,15 @@ INSERT INTO `codebarcakephp`.`actions` (`id`, `name`) VALUES (7, 'Prevenir');
 INSERT INTO `codebarcakephp`.`actions` (`id`, `name`) VALUES (8, 'Terminee');
 INSERT INTO `codebarcakephp`.`actions` (`id`, `name`) VALUES (9, 'Rendue');
 
-INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `actions_id`, `operation_categories_id`) VALUES (1, 1, 1);
-INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `actions_id`, `operation_categories_id`) VALUES (2, 2, 1);
-INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `actions_id`, `operation_categories_id`) VALUES (3, 3, 1);
-INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `actions_id`, `operation_categories_id`) VALUES (4, 4, 1);
-INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `actions_id`, `operation_categories_id`) VALUES (5, 5, 1);
-INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `actions_id`, `operation_categories_id`) VALUES (6, 6, 1);
-INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `actions_id`, `operation_categories_id`) VALUES (7, 7, 1);
-INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `actions_id`, `operation_categories_id`) VALUES (8, 8, 1);
-INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `actions_id`, `operation_categories_id`) VALUES (9, 9, 1);
+INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `action_id`, `operation_category_id`) VALUES (1, 1, 1);
+INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `action_id`, `operation_category_id`) VALUES (2, 2, 1);
+INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `action_id`, `operation_category_id`) VALUES (3, 3, 1);
+INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `action_id`, `operation_category_id`) VALUES (4, 4, 1);
+INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `action_id`, `operation_category_id`) VALUES (5, 5, 1);
+INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `action_id`, `operation_category_id`) VALUES (6, 6, 1);
+INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `action_id`, `operation_category_id`) VALUES (7, 7, 1);
+INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `action_id`, `operation_category_id`) VALUES (8, 8, 1);
+INSERT INTO `codebarcakephp`.`actions_operation_categories` (`id`, `action_id`, `operation_category_id`) VALUES (9, 9, 1);
 
 INSERT INTO `codebarcakephp`.`operation_categories` (`id`, `name`) VALUES (1, 'Intervention');
 INSERT INTO `codebarcakephp`.`operation_categories` (`id`, `name`) VALUES (2, 'Devis');
