@@ -1,7 +1,7 @@
 INSERT INTO `codebarcakephp`.`people` 
     (`id`, `sciper`, `first_name`, `last_name`, `email`, `phone_number`, `is_technician`, `is_banned`, `language_id`) 
     VALUES 
-    (1, 1, 'Poseidon', 'Helpdesk', 'support.poseidon@epfl.ch', '021 693 22 62', 1, '', 1);
+    (1, 1, 'Poseidon', 'Helpdesk', 'support.poseidon@epfl.ch', '021 693 22 62', 1, null, 1);
 
 INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('1', 'Dell', 'www.dell.ch/support');
 INSERT INTO `codebarcakephp`.`brands` (`id`, `name`, `link_to_warranty_check`) VALUES ('2', 'Lenovo', 'www.lenovo.com/checkwarranty');
