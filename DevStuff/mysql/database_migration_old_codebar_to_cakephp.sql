@@ -113,7 +113,7 @@ ALTER TABLE `devices` ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST
   ,ADD COLUMN `date_first_seen` DATETIME AFTER `id`
   ,ADD COLUMN `date_end_of_warranty` DATE AFTER `id`
   ,ADD COLUMN `date_of_purchase` DATE AFTER `id`
-  ,ADD COLUMN `is_active` BOOL NOT NULL DEFAULT '1'
+  ,ADD COLUMN `is_active` BOOL NOT NULL DEFAULT '0'
   ,ADD COLUMN `location_id` INT NULL
   ,ADD COLUMN `Article_Appartient_A` VARCHAR(100)
   ,CHANGE COLUMN `Mach_ServiceTag` `serial_number` VARCHAR(30) NOT NULL DEFAULT '0' UNIQUE
