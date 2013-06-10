@@ -126,9 +126,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codebarcakephp`.`device_loans`
+-- Table `codebarcakephp`.`devices_loans`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`device_loans` (
+CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`devices_loans` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `device_id` INT NOT NULL ,
   `loan_id` INT NOT NULL ,
@@ -166,11 +166,21 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `codebarcakephp`.`operation_types`
+-- Table `codebarcakephp`.`actions`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`operation_types` (
+CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`actions` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(50) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `codebarcakephp`.`actions_operation_categories`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`actions_operation_categories` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `action_id` INT NOT NULL ,
   `operation_category_id` INT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -219,7 +229,7 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `codebarcakephp`.`operations` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `location_id` INT NOT NULL ,
-  `operation_type_id` INT NOT NULL ,
+  `action_id` INT NOT NULL ,
   `person_technician_id` INT NOT NULL ,
   `intervention_id` INT NULL ,
   `estimate_id` INT NULL ,
