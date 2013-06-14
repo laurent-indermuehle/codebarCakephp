@@ -35,6 +35,7 @@ INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('13', 'f
 INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('14', 'dock station');
 INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('15', 'beamer');
 INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('16', 'adaptateur');
+INSERT INTO `codebarcakephp`.`device_categories` (`id`, `name`) VALUES ('17', 'ecran');
 
 INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('65W', 1, 1, 5);
 INSERT INTO `codebarcakephp`.`device_types` (`name`, `is_active`, `brand_id`, `device_category_id`) VALUES ('90W', 1, 1, 5);
@@ -147,6 +148,10 @@ UPDATE `codebarcakephp`.`device_types` SET `brand_id`=4, `device_category_id`=1 
 UPDATE `codebarcakephp`.`device_types` SET `brand_id`=4, `device_category_id`=1 WHERE `id`='77';
 UPDATE `codebarcakephp`.`device_types` SET `brand_id`=4, `device_category_id`=1 WHERE `id`='78';
 UPDATE `codebarcakephp`.`device_types` SET `brand_id`=4, `device_category_id`=1 WHERE `id`='79';
+UPDATE `codebarcakephp`.`device_types` SET `brand_id`=7, `device_category_id`=17 WHERE `id`='80';
+UPDATE `codebarcakephp`.`device_types` SET `brand_id`=2, `device_category_id`=1 WHERE `id` BETWEEN '81' and '87';
+UPDATE `codebarcakephp`.`device_types` SET `brand_id`=4, `device_category_id`=1 WHERE `id` BETWEEN '88' and '92';
+UPDATE `codebarcakephp`.`device_types` SET `brand_id`=3, `device_category_id`=1 WHERE `id`='93';
 
 INSERT INTO `codebarcakephp`.`languages` (`name`) VALUES ('Français');
 INSERT INTO `codebarcakephp`.`languages` (`name`) VALUES ('Anglais');
